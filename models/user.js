@@ -7,17 +7,25 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true
     },
     user_name: DataTypes.STRING,
+    company_id: DataTypes.INTEGER,
     password: DataTypes.STRING,
     user_type: DataTypes.STRING,
     address: DataTypes.STRING,
     zipcode: DataTypes.STRING,
-
-  }, {
-    classMethods: {
-      associate: function(models) {
-        User.hasMany(models.SalesOrder)
-      }
-    }
   });
+  // User.associate = function(models) {
+  //   User.hasMany(models.Product, {
+  //     foreignKey: 'created_by',
+  //     sourceKey: 'id'
+  //   });
+  // };
+
+  // User.associate = function(models) {
+  //   User.belongsTo(models.Company, {
+  //     foreignKey: 'company_id',
+  //     targetKey: 'id'
+  //   });
+  // };
+  
   return User;
 };
