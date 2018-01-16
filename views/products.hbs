@@ -28,17 +28,39 @@
                     <h5>{{created_by}}</h5>
                 </div>
                 <div class="col-md-3">
-                    <div id="chart_div" style="width: 200px; height: 70px;"></div>
+                    <div class="chart_div" style="width: 200px; height: 70px;"></div>
                 </div>
             </div>
         </div> 
         <div class="col-md-1">
-            <button class='btn btn-danger buy'>Buy</button>
+            <button id={{id}} class='btn btn-danger buy'>Buy</button>
         </div>
         <div class="col-md-1">
             <h1>${{price}}</h1>
         </div>
         <br>
-    </div>
+    </div>       
 {{/each}}
+
+<script class="javascript">
+
+    $(".buy").on("click", function(event) {
+        id = $(this).attr('id');
+        console.log( $(this).attr('id'));
+
+   var clickid = {
+     id: $(this).attr('id')
+   };
+
+       // Send the PUT request.
+    $.ajax("/add/click/", {
+      type: "POST",
+      data: clickid
+    }).then(
+      function() {
+        console.log("adding click");
+      }
+    );
+    });
+</script> 
 

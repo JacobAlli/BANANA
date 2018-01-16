@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>{{title}}</title>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    		<script src="https://code.jquery.com/jquery.js"></script>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
@@ -12,10 +12,11 @@
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
 
+      
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
           ['Year', 'Clicks'],
-          ['2001',  1000],
+          ['0',  0],
           ['2002',  1170],
           ['2003',  610],
           ['2004',  1260],
@@ -44,9 +45,14 @@
             0: {color:'#ADB227'}
           }
         };
+        var products = document.querySelectorAll('.chart_div');
+        console.log(products);
 
-        var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
-        chart.draw(data, options);
+        products.forEach((product)=> {
+          var chart = new google.visualization.AreaChart(product);
+          chart.draw(data, options);
+        });
+        
       }
     </script>
     <script language="javasscript">
