@@ -2,11 +2,17 @@
 <html>
   <head>
     <title>{{title}}</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel="stylesheet" type="text/css" href="jquery.fullPage.css" />
+    <link rel='stylesheet' href='stylesheets/style.css' />
+	<script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/fullpage.js/dist/jquery.fullpage.js"></script>
 
   </head>
   <body>
     {{{body}}}
+
+    <script>
+    	$(document).ready(() => $('#fullpage').fullpage());
+    </script>
   </body>
 </html>
