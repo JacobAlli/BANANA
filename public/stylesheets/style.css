@@ -1,8 +1,28 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 
-a {
-  color: #00B7FF;
+*:after {
+	box-sizing: inherit;
+	margin: inherit;
+	padding: inherit;
+}
+
+
+.one {
+	background: #444;
+}
+
+.two {
+	background: #555;
+}
+
+.three {
+	background: #666;
+}
+
+.four {
+	background: #777
 }
