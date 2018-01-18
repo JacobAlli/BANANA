@@ -136,5 +136,3 @@ insert into products (short_desc, category_id, created_by, company_id, create_da
 values ('iBanana with Retina 5K display (27 ) (Mid 2017)',10,1,1,now(),2999,now(),now());
 insert into products (short_desc, category_id, created_by, company_id, create_date, price, createdAt,updatedAt)
 values ('iBanana Pro (27 ) (Late 2017)',10,1,1,now(),2999,now(),now());
-
-select * from products

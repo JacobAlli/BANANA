@@ -13,17 +13,13 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
       len: [1]
-    },
-    category_desc: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      len: [1]
     }
   });
   Category.associate = function(models) {
     Category.hasMany(models.Product, {
       foreignKey: 'category_id',
-      sourceKey: 'id'
+      targetKey: 'id',
+      underscored: true
     });
   };
   return Category;

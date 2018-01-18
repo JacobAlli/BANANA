@@ -16,12 +16,12 @@ module.exports = function(sequelize, DataTypes) {
     },
   });
   
-  Click.associate = function(models) {
-    Click.belongsTo(models.Product, {
-      foreignKey: 'product_id',
-      targetKey: 'id'
-    });
-  };
+  // Click.associate = function(models) {
+  //   Click.belongsTo(models.Product, {
+  //     foreignKey: 'product_id',
+  //     targetKey: 'id'
+  //   });
+  // };
 
   // Product.associate = function(models) {
   //   Product.belongsTo(models.User, {
