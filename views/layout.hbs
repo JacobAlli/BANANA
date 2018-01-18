@@ -2,17 +2,184 @@
 <html>
   <head>
     <title>{{title}}</title>
-    <link rel="stylesheet" type="text/css" href="jquery.fullPage.css" />
-    <link rel='stylesheet' href='stylesheets/style.css' />
-	<script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/fullpage.js/dist/jquery.fullpage.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 
+    <link rel="stylesheet" type="text/css" href="../bower_components/fullpage.js/jquery.fullPage.css" />
+    <link rel='stylesheet' type="text/css" href='../stylesheets/style.css' />
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+
+	  <script type="text/javascript" src="../bower_components/fullpage.js/vendors/scrolloverflow.js"></script>
+
+  <script type="text/javascript" src="../bower_components/fullpage.js/jquery.fullPage.js"></script>
+
+    	<!--	<script src="https://code.jquery.com/jquery.js"></script>-->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
+    
+    
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'Clicks'],
+          ['0',  0],
+          ['2002',  1170],
+          ['2003',  610],
+          ['2004',  1260],
+          ['2005',  1560],
+          ['2006',  560],
+          ['2007',  260],
+          ['2008',  1030]
+        ]);
+
+        var options = {
+          legend:{position:'none'},
+          hAxis: {
+            baselineColor: 'transparent',
+            textStyle: {color: 'transparent'}
+          },
+          vAxis: {
+            textStyle: {color: 'transparent'},
+            baselineColor: 'transparent',
+            minValue: 0,
+            gridlines: {
+              color: 'transparent'
+            }
+          },
+          lineWidth: 2,
+          series: {
+            0: {color:'#ADB227'}
+          }
+        };
+        var products = document.querySelectorAll('.chart_div');
+        console.log(products);
+
+        products.forEach((product)=> {
+          var chart = new google.visualization.AreaChart(product);
+          chart.draw(data, options);
+        });
+        
+      }
+    </script>
+    <script language="javascript">
+      $( "li" ).hover(
+        function() {
+            $(this).find("span").stop().animate({
+            width:"100%",
+            opacity:"1",
+          }, 400, function () {
+          })
+        }, function() {
+            $(this).find("span").stop().animate({
+            width:"0%",
+            opacity:"0",
+          }, 400, function () {
+          })
+        }
+      );
+    </script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+          $('#fullpage').fullpage({
+            sectionsColor: ['#fff', '#252839', '#677077','#f2b632']
+          });
+        });
+
+        
+      </script>
   </head>
-  <body>
+
+  <header>
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="height: 55px;">
+          
+      
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only"><!--Toggle navigation--></span>
+            <span class="navbar-toggle-icon"><a href="#fourthPage"></span>
+               <span class="icon-bar"><a href="/"><img class='icon' src='assets/img/WhiteBanana.png'></a></span>
+           <span class="navCart"><a href="#"><img class="cartIcon" src='assets/img/shoppingBag.png' height="40"></a></span>
+          </button>
+       
+        </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><a href="/"><img class='icon' src='assets/img/WhiteBanana.png'></a></li>
+          <li><a class="navbar-brand" href="/">Banana.Shop</a></li>
+          <li><a class="navbar-brand" href="#secondPage">iBanana</a><span class="hover"></span></li>
+          <li><a class="navbar-brand" href="#thirdPage">BananaMac Pro</a><span class="hover"></span></li>
+          <li><a class="navbar-brand" href="#fourthPage">LapBanana</a><span class="hover"></span></li>
+          <li><a class="navbar-brand" href="#">MagicBanana</a><span class="hover"></span></li>
+          <li><a class="navbar-brand" href="#">Contact</a><span class="hover"></span></li>
+        </ul>
+      </div>
+      </div>
+    </nav>
+
+  
+      
+  </header>
+
+  <body> 
+
     {{{body}}}
 
-    <script>
-    	$(document).ready(() => $('#fullpage').fullpage());
-    </script>
+   
+
+
+  <script>
+      $(function() {
+        function count($this){
+            var current = parseInt($this.html(), 10);
+            $this.html(++current);
+            if(current !== $this.data('count')){
+                setTimeout(function(){count($this)}, 30);
+            }
+        }        
+      $(".numCount").each(function() {
+          $(this).data('count', parseInt($(this).html(), 10));
+          $(this).html('0');
+          count($(this));
+      });
+    });
+
+  </script>
+
+
+
   </body>
+
+  <!--<footer id='footer'>
+    <div class='container footer'>
+      <div class="row">
+        <div class="col-md-6">
+          <h2 class='footer-brand'> Banana.Works</h2>
+          <div class="row">
+            <a href="https://github.com/JacobAlli">
+            <img class="img-circle" src="https://avatars0.githubusercontent.com/u/29315636?s=460&v=4">
+            </a>
+            &nbsp;
+            <a href="https://github.com/rernst322">
+            <img class="img-circle" src="https://avatars0.githubusercontent.com/u/29467669?s=460&v=4">
+            </a>
+            &nbsp;
+            <a href="https://github.com/BenNewell32">
+            <img class="img-circle" src="https://avatars1.githubusercontent.com/u/23373268?s=460&v=4">
+            </a>
+          </div>
+        </div>
+        <div class="col-md-6">
+        </div>
+      </div>
+  </footer>-->
 </html>

@@ -10,19 +10,313 @@
 	padding: inherit;
 }
 
-
-.one {
-	background: #f2b632;
+h1 {
+  text-align: center;
 }
 
-.two {
-	background: #2e4052;
+/********/
+/* icon */
+/********/
+.icon{
+  width: 40px;
+  height: 40px;
+  float: left;
+  margin-top: -7px;
 }
 
-.three {
-	background: #412234;
+
+/***********/
+/* nav bar */
+/***********/
+.navbar-toggle {
+  width: 100%;
 }
 
-.four {
-	background: #bdd9bf;
+.navbar-toggle button{
+  float: left;
 }
+.navbar-inverse{
+  background:#222B31 !important;
+  border-bottom:4px solid #ADB227 !important;
+}
+
+.navbar-brand{
+  font:200 14px helvetica neue !important;
+  color:#FFF !important;
+  letter-spacing:2px;
+  margin-bottom: 7px;
+  margin-top: 3px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+
+
+ul.nav.navbar-nav {
+  width: 100%;
+  text-align: center;
+}
+
+.nav{
+  margin-bottom:0px;
+
+  a{
+    font:500 11px Lato;
+    letter-spacing:2px;
+    padding:5px !important;
+    color:#a3bfc6 !important;
+    text-transform:uppercase;
+    position:relative;
+    z-index:1000;
+    height: 50px;
+  }
+  a:hover{
+    /*color:#FFF !important;*/
+
+  }
+  li{
+    position:relative;
+
+  }
+}
+
+.navbar-inverse .navbar-toggle{
+  border:none;
+}
+
+.navbar-collapse{
+  box-shadow:none !important;
+  border:none !important;
+  margin: auto;
+}
+
+.navbar-inverse .navbar-toggle:hover{
+  background:transparent !important;
+}
+
+.navbar-inverse .navbar-toggle:focus{
+  background:transparent !important;
+}
+
+.navbar-inverse .navbar-toggle:active{
+  background:transparent !important;
+}
+
+.icon-bar{
+  background:#a3bfc6 !important;
+  /*margin: auto;*/
+  float: left;
+
+}
+
+.sr-only {
+  float: left;
+  clear: right;
+  color: white;
+  background-color: purple;
+}
+
+.navCart {
+  float: right;
+}
+
+.cartIcon img{
+  height: 40px;
+  width: 40px;
+}
+
+
+.hover{
+  display:block;
+  position:absolute;
+  width:0%;
+  height:100%;
+  top:0px;
+  left:0px;
+  background:#EE445F !important;
+  z-index:0;
+  opacity:0;
+}
+
+@media (max-width: 767px) {
+.nav{
+  padding-bottom:20px;
+  a{
+    padding:12px !important;
+  }
+}
+}
+
+@media (max-width: 480px) {
+  .nav{
+    padding-bottom:20px;
+  }
+}
+
+
+.collapse.navbar-collapse{
+  margin: auto;
+  width: 70%;
+}
+/**********/
+/* footer */
+/**********/
+footer{
+  background:#222B31;
+  position:fixed;
+  left:0px;
+  bottom:0px;
+  height:80px;
+  width:100%;
+  border-top:4px solid #ADB227 !important;
+  
+}
+
+.footer-brand{
+  position: absolute;
+  z-index: -1;
+  font:20px Lato !important;
+  text-transform:uppercase;
+  color:rgba(255, 255, 255, 0.23) !important;
+  letter-spacing:2px;
+  margin-top:2px;
+  margin-left:-15px;
+  text-align: center;
+  justify-content: center;
+}
+
+/************/
+/* profiles */
+/************/
+.img-circle {
+  border-radius: 50%;
+  margin: auto;
+}
+
+img.img-circle {
+  margin: auto;
+}
+
+.img-circle:hover{
+  background: rgba(255, 255, 255, 0.31);
+  
+}
+
+/*****************/
+/* products page */
+/*****************/
+
+.productshelf{
+  background: #818B75;
+  border: solid border-style #222B31;
+  height: 2px;
+  text-align: left;
+  align-content: left;
+  justify-content: left;
+  width: 100%;
+}
+
+.buy{
+  margin-top:15px;
+
+}
+
+/*****************/
+/*  FRONT PAGE  */
+/*****************/
+.oneLogo {
+  margin: auto;
+  height: 300px;
+  width: 300px;
+}
+
+.oneLogo img{
+  height: 400px;
+}
+
+.feat {
+  background-color: white;
+  width: 97%;
+  height: 370px;
+  margin: auto;
+  margin-top: 10px;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.oneImg {
+  margin: auto;
+     width: 45%;
+  height: 50%;
+}
+
+.oneImg img{
+   margin: auto;
+
+}
+
+#section1 h1{
+  text-align: center;
+  font-size: 70px;
+}
+
+#section1 p{
+  text-align: center;
+  font-size: 25px;
+}
+
+#feat span {
+  font-size: 100px;
+  text-align: center;
+  color: black;
+}
+
+
+#section3 h1 {
+  color: white;
+}
+
+#section4 {
+  padding: 50px;
+}
+
+.analyticsThree {
+
+  margin: 10px;
+  text-align: center;
+  color: white;
+}
+
+.numCount {
+  font-size: 70px;
+}
+
+.analyticsThree h2 {
+  text-align: center;
+}
+
+/***************/
+/*  THE TEAM */
+/***************/
+
+#section4 h2 {
+  text-align: center;
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
