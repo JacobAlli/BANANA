@@ -2,20 +2,30 @@
 
     <div class="login-card">
         <div class="container">
+
             <div class="login-form">
+                <h1>Login</h1>
                 <form action="/login" method="post">
-                    <input type="text" name="username">
-                    <input type="text" name="password">
-                    <input type="submit" value="Login">
+                    <label>Username</label>
+                    <input type="text" name="username" required="">
+                    <label>Password</label>
+                    <input type="password" name="password" required="">
+                    <input type="submit" value="Login" id="form-btn">
                 </form>
             </div>
             <div class="register-form">
+                <br>
+                <h1>Register</h1>
                 <form action="/login" method="POST">
-                    <input type="text" name="username">
-                    <input type="text" name="email">
-                    <input type="text" name="password">
-                    <input type="text" name="password_check">
-                    <input type="submit" value="Register">
+                    <label>Username</label>
+                    <input type="text" name="username" required="">
+                    <label>Email</label>
+                    <input type="text" name="email" required="">
+                    <label>Password</label>
+                    <input type="text" name="password" required="">
+                    <label>Re-enter Password</label>
+                    <input type="text" name="password_check" required="">
+                    <input type="submit" value="Register" id="form-btn">
                 </form>
             </div>
         </div>

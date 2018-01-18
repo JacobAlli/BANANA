@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": null,
+    "password": "08061963nh",
     "database": "bananashop",
     "host": "127.0.0.1",
     "dialect": "mysql"
