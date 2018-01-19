@@ -1,15 +1,11 @@
-* {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-*:after {
-	box-sizing: inherit;
-	margin: inherit;
-	padding: inherit;
+a {
+  color: #00B7FF;
 }
-
 
 /********/
 /* icon */
@@ -167,23 +163,4 @@ footer{
 
 .buy{
   margin-top:15px;
-
-.error-warning {
-	color: red;
-}
-
-.one {
-	background: #f2b632;
-}
-
-.two {
-	background: #2e4052;
-}
-
-.three {
-	background: #412234;
-}
-
-.four {
-	background: #bdd9bf;
 }
