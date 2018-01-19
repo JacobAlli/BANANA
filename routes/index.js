@@ -17,8 +17,7 @@ router.get('/products', function(req, res, next) {
       include: [{all: true}]
   }).then((products) => {
     res.render('products', {products: products})
-    var duck = 'category';
-    console.log(products[0]);
+    console.log(products.Category.category_name);
   });
 });
 module.exports = router;
