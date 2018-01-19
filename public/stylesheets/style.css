@@ -20,8 +20,7 @@ h1 {
 .icon{
   width: 40px;
   height: 40px;
-  float: left;
-  margin-top: -7px;
+  margin-top: auto;
 }
 
 
@@ -60,7 +59,7 @@ ul.nav.navbar-nav {
 .nav{
   margin-bottom:0px;
 
-  a{
+  a {
     font:500 11px Lato;
     letter-spacing:2px;
     padding:5px !important;
@@ -106,6 +105,7 @@ ul.nav.navbar-nav {
   background:#a3bfc6 !important;
   /*margin: auto;*/
   float: left;
+  margin: 10px;
 
 }
 
@@ -124,7 +124,6 @@ ul.nav.navbar-nav {
   height: 40px;
   width: 40px;
 }
-
 
 .hover{
   display:block;
