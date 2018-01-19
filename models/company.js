@@ -21,11 +21,13 @@ module.exports = function(sequelize, DataTypes) {
     }
 
   });
-  Company.associate = function(models) {
-    Company.hasMany(models.User, {
-      foreignKey: 'company_id',
-      targetKey: 'id'
-    });
-  };
+
+  // Company.associate = function(models) {
+  //   Company.hasMany(models.User, {
+  //     foreignKey: 'company_id',
+  //     targetKey: 'id'
+  //   });
+  // };
+
   return Company;
 };

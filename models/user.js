@@ -1,3 +1,5 @@
+var bcrypt = require('bcryptjs');
+
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var User = sequelize.define('User', {
@@ -26,6 +28,14 @@ module.exports = (sequelize, DataTypes) => {
   //     targetKey: 'id'
   //   });
   // };
-  
+
+  User.prototype.generateHash = function(password){
+      return bcrypt.hash(password, bcrypt.genSaltSync(8));
+  }
+
+  User.prototype.validPassword = function(password){
+      return bcrypt.compare(password, this.password);
+  }
+
   return User;
-};
+}

@@ -41,19 +41,13 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
   
-  // Product.associate = function(models) {
-  //   Product.belongsTo(models.Category, {
-  //     foreignKey: 'category_id',
-  //     targetKey: 'id'
-  //   });
-  // };
-
-  // Product.associate = function(models) {
-  //   Product.belongsTo(models.User, {
-  //     foreignKey: 'created_by',
-  //     targetKey: 'id'
-  //   });
-  // };
+  Product.associate = function(models) {
+    Product.belongsTo(models.Category,{
+      foreignKey: 'category_id',
+      targetKey: 'id',
+      underscored: true
+    })
+  };
 
   return Product;
 };
