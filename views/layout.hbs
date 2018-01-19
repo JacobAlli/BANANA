@@ -2,21 +2,22 @@
 <html>
   <head>
       <title>{{title}}</title>
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
       <link rel="stylesheet" type="text/css" href="/bower_components/fullpage.js/jquery.fullPage.css" />
-      <link rel='stylesheet' type="text/css" href='/stylesheets/style.css' />
+      <script src="/bower_components/jquery/dist/jquery.js"></script>
       <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
-      <script type="text/javascript" src="/bower_components/fullpage.js/vendors/scrolloverflow.js"></script>
       <script type="text/javascript" src="/bower_components/fullpage.js/jquery.fullPage.js"></script>
+      <script type="text/javascript" src="/bower_components/fullpage.js/vendors/scrolloverflow.js"></script>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
       <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-      <link href='https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'> 
+      <link href='https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
+      <link rel='stylesheet' type="text/css" href='/stylesheets/style.css' />
       <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   </head>
 
-  <header>
+  <!-- <header>
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="height: 55px;">
-          
-      
+
+
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -25,7 +26,7 @@
             <span class="homeBtn"><a href="/"><img class='icon' src='assets/img/WhiteBanana.png'></a></span>
            <span class="navCart"><a href="#"><img class="cartIcon" src='assets/img/shoppingBag.png' height="40"></a></span>
           </button>
-       
+
         </div>
 
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -41,8 +42,8 @@
       </div>
       </div>
     </nav>
-      
-  </header>
+
+  </header> -->
 
     {{{body}}}
 
@@ -80,7 +81,7 @@
                 if(current !== $this.data('count')){
                     setTimeout(function(){count($this)}, 30);
                 }
-            }        
+            }
           $(".numCount").each(function() {
               $(this).data('count', parseInt($(this).html(), 10));
               $(this).html('0');
@@ -95,7 +96,7 @@
           $('#fullpage').fullpage({
             sectionsColor: ['#fff', '#252839', '#677077','#f2b632']
           });
-        });  
+        });
     </script>
 
   </body>

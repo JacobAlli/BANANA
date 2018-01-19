@@ -14,8 +14,7 @@ router.get('/', function(req, res){
 
 passport.use(new LocalStrategy(
   function(username, password, done) {
-   db.User.findOne({where: {user_name: username}}).then(function(err, user){
-	if(err) throw err;
+   db.User.findOne({where: {user_name: username}}).then(function(user){
    	if(!user){
    		return done(null, false, {message: 'Unknown User'});
    	}
@@ -35,13 +34,13 @@ passport.serializeUser(function(user, done){
 });
 
 passport.deserializeUser(function(id, done){
-	db.User.findById(id).then(function(err, user){
-		done(err, user);
+	db.User.findById(id).then(function(user){
+		done(null, user);
 	});
 });
 
-router.post('/signin', 
-	passport.authenticate('local', {successRedirect: '/', failureRedirect: '/login', failureFlash: true}), 
+router.post('/signin',
+	passport.authenticate('local', {successRedirect: '/', failureRedirect: '/login', failureFlash: true}),
 		function(req, res){
 			res.redirect('/');
 		});
