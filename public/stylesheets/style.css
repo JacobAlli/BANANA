@@ -32,7 +32,9 @@
 	font-family: sans-serif;
 	background: url("../assets/img/login-banana.jpg");
 } */
-body {
+.login-bg {
+	height: 100vh;
+	width: 100%;
 	margin: 0;
 	padding: 0;
 	background: url("../assets/img/login-banana.jpg");
@@ -64,12 +66,11 @@ body {
 	width: 100%;
 	padding: 5px 0;
 	font-size: 16px;
-	color:#fff;
+	color: black;
 	margin-bottom: 10px;
-	border: none;
-	border-bottom: 1px solid white;
+	border: 1px solid white;
 	outline: none;
-	background: transparent;
+	background: white;
 } 
  .container .login-form label {
 	position: relative;
@@ -88,12 +89,11 @@ body {
 	width: 100%;
 	padding: 5px 0;
 	font-size: 16px;
-	color: #fff;
+	color: black;
 	margin-bottom: 10px;
-	border: none;
-	border-bottom: 1px solid white;
+	border: 1px solid white;
 	outline: none;
-	background: transparent;
+	background: white;
 } 
  .container .register-form label {
 	position: relative;
