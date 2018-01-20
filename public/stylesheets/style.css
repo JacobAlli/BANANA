@@ -15,7 +15,7 @@
 .login-bg {
 	height: 100vh;
 	width: 100%;
-	margin: 0;
+	margin-top: 100px;
 	padding: 0;
 	background: url("../assets/img/login-banana.jpg");
 	font-family: sans-serif;
@@ -38,10 +38,10 @@
 	padding: 0;
 	color: white;
 	text-align: center;
-} 
+}
 .log-container .login-form {
 	position: relative;
-} 
+}
 .log-container .login-form input {
 	width: 100%;
 	padding: 5px 0;
@@ -51,7 +51,7 @@
 	border: 1px solid white;
 	outline: none;
 	background: white;
-} 
+}
  .log-container .login-form label {
 	position: relative;
 	top: 0;
@@ -64,7 +64,7 @@
 }
 .log-container .register-form {
 	position: relative;
-} 
+}
 .log-container .register-form input {
 	width: 100%;
 	padding: 5px 0;
@@ -74,7 +74,7 @@
 	border: 1px solid white;
 	outline: none;
 	background: white;
-} 
+}
  .log-container .register-form label {
 	position: relative;
 	top: 0;

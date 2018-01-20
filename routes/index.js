@@ -21,9 +21,19 @@ router.get('/products', function(req, res, next) {
   db.Product.findAll({
       include: [{all: true}]
   }).then((products) => {
-    res.render('products', {products: products})
+    res.render('products', {products: products, user: req.user})
     var duck = 'category';
     console.log(products[0]);
+  });
+});
+
+router.get('/products/clicks', function(req, res){
+  db.Click.findAll({
+  attributes: ['product_id',[db.sequelize.fn('COUNT', db.sequelize.col('id')), 'clickCount']],
+  group: 'product_id'
+  }).then((result) => {
+    res.json({clicks:result, user: req.user.user_name});
+
   });
 });
 

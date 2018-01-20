@@ -1,3 +1,4 @@
+{{#if user}}
 <br>
 <br>
 
@@ -31,7 +32,7 @@
                     <div class="chart_div" style="width: 200px; height: 70px;"></div>
                 </div>
             </div>
-        </div> 
+        </div>
         <div class="col-md-1">
             <button id={{id}} class='btn btn-danger buy'>Buy</button>
         </div>
@@ -39,7 +40,7 @@
             <h1>${{price}}</h1>
         </div>
         <br>
-    </div>       
+    </div>
 {{/each}}
 
 <script class="javascript">
@@ -62,5 +63,10 @@
       }
     );
     });
-</script> 
-
+</script>
+{{/if}}
+{{#unless user}}
+    <script>
+        window.location.href = "/login";
+    </script>
+{{/unless}}
