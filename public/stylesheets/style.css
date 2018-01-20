@@ -21,7 +21,7 @@
 	font-family: sans-serif;
 	background-size: cover;
 }
-.container {
+.log-container {
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -33,16 +33,16 @@
 	box-shadow: 0 15px 25px rgba(0, 0, 0, .5);
 	border-radius: 10px;
 }
- .container h1 {
+ .log-container h1 {
 	margin: 0 0 30px;
 	padding: 0;
 	color: white;
 	text-align: center;
 } 
-.container .login-form {
+.log-container .login-form {
 	position: relative;
 } 
-.container .login-form input {
+.log-container .login-form input {
 	width: 100%;
 	padding: 5px 0;
 	font-size: 16px;
@@ -52,7 +52,7 @@
 	outline: none;
 	background: white;
 } 
- .container .login-form label {
+ .log-container .login-form label {
 	position: relative;
 	top: 0;
 	left: 0;
@@ -62,10 +62,10 @@
 	pointer-events: none;
 	transition: .5s;
 }
-.container .register-form {
+.log-container .register-form {
 	position: relative;
 } 
-.container .register-form input {
+.log-container .register-form input {
 	width: 100%;
 	padding: 5px 0;
 	font-size: 16px;
@@ -75,7 +75,7 @@
 	outline: none;
 	background: white;
 } 
- .container .register-form label {
+ .log-container .register-form label {
 	position: relative;
 	top: 0;
 	left: 0;
@@ -86,7 +86,8 @@
 	transition: .5s;
 }
 
-#form-btn {
+#login-form-btn ,
+#register-form-btn {
 	color: black;
 	background: #f2b632;
 }
