@@ -14,7 +14,7 @@
       <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   </head>
 
-  <!-- <header>
+  <header>
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="height: 55px;">
 
 
@@ -43,11 +43,11 @@
       </div>
     </nav>
 
-  </header> -->
+  </header> 
 
     {{{body}}}
 
-  <!-- <footer id='footer'>
+{{!--    <footer id='footer'>
     <div class='container footer'>
       <div class="row">
         <div class="col-md-6">
@@ -69,34 +69,11 @@
         <div class="col-md-6">
         </div>
       </div>
-  </footer> -->
+  </footer> --}}
 
     <script language="javasscript" src="/javascripts/animations.js"></script>
     <script type="text/javascript" src="/javascripts/googleCharts.js"></script>
-    <script>
-          $(function() {
-            function count($this){
-                var current = parseInt($this.html(), 10);
-                $this.html(++current);
-                if(current !== $this.data('count')){
-                    setTimeout(function(){count($this)}, 30);
-                }
-            }
-          $(".numCount").each(function() {
-              $(this).data('count', parseInt($(this).html(), 10));
-              $(this).html('0');
-              count($(this));
-          });
-        });
-
-    </script>
-
-    <script type="text/javascript">
-        $(document).ready(function(){
-          $('#fullpage').fullpage({
-            sectionsColor: ['#fff', '#252839', '#677077','#f2b632']
-          });
-        });
-    </script>
+    <script src="/javascripts/counter.js"></script>
+    <script src="/javascripts/fullpageSections.js" type="text/javascript"></script>
 
   </body>
