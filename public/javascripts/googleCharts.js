@@ -1,4 +1,6 @@
+///////////////////////////
 //ADD CLICK COUNT TO PAGE//
+///////////////////////////
 getClicks();
 var allClicks;
 function getClicks(){
@@ -39,9 +41,99 @@ function findProductsOnPage(){
     // console.log("Product count =",product.attributes.clickcount.nodeValue)
     });
   };
+/////////////////////////////
+//TOTALS FOR ANALYTICS PAGE//
+/////////////////////////////
 
+////////////////////
+//TOTAL USER COUNT//
+////////////////////
+getUserTotal();
+var allUsers;
+function getUserTotal(){
+  // Send the PUT request.
+  $.ajax("/api/users", {
+    type: "GET"
+  }).then(
+    function(data) {
+      allUsers= data;
+      sumUsers();
+    }
+  );
+};
 
-//ADD CHART TO PAGE//
+function sumUsers(){
+  // console.log("now scope is correct",allUsers.length)
+  var userTotal = document.querySelectorAll('#BAusers')
+  // console.log(userTotal)
+  userTotal.forEach((userTotal)=> {
+    userTotal.innerHTML = allUsers.length ;
+  })
+};
+
+//////////////////////
+//TOTAL CLIENT COUNT//
+//////////////////////
+getClientCount();
+var totalClients;
+function getClientCount(){
+  // Send the PUT request.
+  $.ajax("/api/orders", {
+    type: "GET"
+  }).then(
+    function(data) {
+      totalClients= data;
+      orderCount();
+    }
+  );
+};
+
+function orderCount(){
+  // console.log("now scope is correct",totalClients)
+  var clientTotal = document.querySelectorAll('#BAclients')
+  // console.log(clientTotal)
+  clientTotal.forEach((clientTotal)=> {
+    clientTotal.innerHTML = totalClients.length;
+    salesTotal();
+  })
+};
+
+///////////////
+//SALES TOTAL//
+///////////////
+var salesIncrement=0;
+var formatSales;
+function salesTotal(){
+  // console.log('in scope',totalClients);
+  totalClients.forEach((order)=> {
+    // console.log("item price: ",parseInt(order.price));
+    var price= parseInt(order.price);
+    var qty = order.qty;
+    var sum = price * qty;
+    // console.log(price);
+    // console.log(qty);
+    // console.log(price * qty);
+    // console.log("summed ", sum);
+    salesIncrement=salesIncrement+sum;
+  });
+  console.log(salesIncrement);
+  formatSales = "$"+salesIncrement;
+  console.log(formatSales);
+  addSalestoPage();
+};
+
+function addSalestoPage(){
+  // console.log("now scope is correct",totalClients)
+  var salesTotal = document.querySelectorAll('#BAsales')
+  // console.log(clientTotal)
+  salesTotal.forEach((salesTotal)=> {
+    salesTotal.innerHTML = formatSales;
+  })
+};
+
+///////////////////////////////////////
+//ADD CHART TO ANALYTICS/PRODUCT PAGE//
+///////////////////////////////////////
 google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
 

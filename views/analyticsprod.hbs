@@ -1,7 +1,9 @@
 {{#if user}}
 <br>
 <br>
-
+<br>
+<br>
+<br>
 <label for="p_scnts">
     <input type="text" id="p_scnt" size="20" name="p_scnt" value="" placeholder="Product Name" />
 </label>
@@ -41,7 +43,20 @@
         <br>
     </div>       
 {{/each}}
-
+{{#each users}}
+    <div class='row prod' id={{id}}>
+        <div class="col-md-10 ">
+            <div class='productshelf'>
+            </div>
+            <div class="row">
+                <div class="col-md-5" >
+                    <h3>{{short_desc}}</h3>
+                </div>
+            </div>
+        </div> 
+        <br>
+    </div>       
+{{/each}}
 <script class="javascript">
     $(".buy").on("click", function(event) {
         id = $(this).attr('id');

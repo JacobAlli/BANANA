@@ -1,7 +1,9 @@
 {{#if user}}
 <br>
 <br>
-
+<br>
+<br>
+<br>
 <label for="p_scnts">
     <input type="text" id="p_scnt" size="20" name="p_scnt" value="" placeholder="Product Name" />
 </label>
@@ -13,35 +15,20 @@
 </label>
 <br>
 <br>
-{{#each products}}
-Redo this structure
-    <div class='row prod' id={{id}}>
-        <div class="col-md-10 ">
-            <div class='productshelf'>
-            </div>
-            <div class="row">
-                <div class="col-md-5" >
-                    <h3>{{short_desc}}</h3>
-                </div>
-                <div class="col-md-2">
-                    <h5>{{Category.category_name}}</h5>
-                </div>
-                <div class="col-md-2 clicksArea" prodID={{id}} clickcount="0">
-                </div>
-                <div class="col-md-3">
-                    <div class="chart_div" style="width: 200px; height: 70px;"></div>
-                </div>
-            </div>
-        </div> 
-        <div class="col-md-1">
-            <button id={{id}} class='btn btn-danger delete'>Delete</button>
-        </div>
-        <div class="col-md-1">
-            <h1>${{price}}</h1>
-        </div>
-        <br>
-    </div>       
-{{/each}}
+<div class="row">
+    <div class="col-md-4">
+        <h1 class='BAheader'>TOTAL SALES</h1>
+        <div class='BAcount' id='BAsales'>$1,100,343</div>
+    </div>
+    <div class="col-md-4">
+        <h1 class='BAheader'>TOTAL USERS</h1>
+        <div class='BAcount' id='BAusers'></div>
+    </div>
+    <div class="col-md-4">
+        <h1 class='BAheader'># of Orders</h1>
+        <div class='BAcount' id='BAclients'></div>
+    </div>
+</div>
 
 <script class="javascript">
     $(".buy").on("click", function(event) {

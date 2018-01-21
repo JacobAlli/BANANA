@@ -389,6 +389,22 @@ img.img-circle {
 
 }
 
+/*******************/
+/* ANALYTICS PAGES */
+/*******************/
+.BAheader{
+  font:500 40px Lato;
+  letter-spacing:2px;
+  padding:5px !important;
+  color:#222B31 !important;
+  text-transform:uppercase
+}
 
-
-
+.BAcount{
+  text-align: center;
+  font:500 120px Lato;
+  letter-spacing:2px;
+  padding:5px !important;
+  color:rgb(80, 104, 52) !important;
+  text-transform:uppercase
+}
