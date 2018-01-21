@@ -15,7 +15,7 @@ module.exports = function(sequelize, DataTypes) {
       len: [1]
     },
   });
-  
+
   // Click.associate = function(models) {
   //   Click.belongsTo(models.Product, {
   //     foreignKey: 'product_id',

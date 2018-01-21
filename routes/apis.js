@@ -5,12 +5,6 @@ var db = require("../models");
 
 router.get('/products', function(req, res, next) {
   db.Product.findAll({
-    // include: [{
-    //   model: company,
-    //   through: {
-    //     attributes: ['company_name'],
-    //   }
-    // }]
   }).then((products) => {
     res.json(products)
   });
@@ -18,12 +12,6 @@ router.get('/products', function(req, res, next) {
 
 router.get('/categories', function(req, res, next) {
   db.Category.findAll({
-    // include: [{
-    //   model: company,
-    //   through: {
-    //     attributes: ['company_name'],
-    //   }
-    // }]
   }).then((categories) => {
     res.json(categories)
   });
@@ -31,14 +19,18 @@ router.get('/categories', function(req, res, next) {
 
 router.get('/users', function(req, res, next) {
   db.User.findAll({
-    // include: [{
-    //   model: company,
-    //   through: {
-    //     attributes: ['company_name'],
-    //   }
-    // }]
   }).then((users) => {
     res.json(users)
+  });
+});
+
+router.get('/clicks', function(req, res){
+  db.Click.findAll({
+  attributes: ['product_id',[db.sequelize.fn('COUNT', db.sequelize.col('id')), 'clickCount']],
+  group: 'product_id'
+  }).then((result) => {
+    res.json({clicks:result, user: req.user.user_name});
+
   });
 });
 module.exports = router;

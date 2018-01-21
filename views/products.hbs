@@ -1,3 +1,4 @@
+{{#if user}}
 <br>
 <br>
 
@@ -13,28 +14,21 @@
 <br>
 <br>
 {{#each products}}
-    <div class='row'>
+    <div class='row prod' id={{id}}>
         <div class="col-md-10 ">
             <div class='productshelf'>
             </div>
             <div class="row">
-                <div class="col-md-5">
+                <div class="col-md-5" >
                     <h3>{{short_desc}}</h3>
                 </div>
                 <div class="col-md-2">
-                    <h5>{{Category.category_name}}
-                    </h5>
-                </div>
-                <div class="col-md-2">
-                    <h5>{{created_by}}</h5>
-                </div>
-                <div class="col-md-3">
-                    <div class="chart_div" style="width: 200px; height: 70px;"></div>
+                    <h5>{{Category.category_name}}</h5>
                 </div>
             </div>
         </div> 
         <div class="col-md-1">
-            <button id={{id}} class='btn btn-danger buy'>Buy</button>
+            <button id={{id}} class='btn btn-danger buy'>buy</button>
         </div>
         <div class="col-md-1">
             <h1>${{price}}</h1>
@@ -44,7 +38,6 @@
 {{/each}}
 
 <script class="javascript">
-
     $(".buy").on("click", function(event) {
         id = $(this).attr('id');
         console.log( $(this).attr('id'));
@@ -63,5 +56,10 @@
       }
     );
     });
-</script> 
-
+</script>
+{{/if}}
+{{#unless user}}
+    <script>
+        window.location.href = "/login";
+    </script>
+{{/unless}}
