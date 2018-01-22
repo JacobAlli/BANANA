@@ -1,5 +1,5 @@
 ///////////////////////////
-//ADD CLICK COUNT TO PAGE//
+//ADD CLICK COUNT TO PAGE// DONE
 ///////////////////////////
 getClicks();
 var allClicks;
@@ -46,7 +46,7 @@ function findProductsOnPage(){
 /////////////////////////////
 
 ////////////////////
-//TOTAL USER COUNT//
+//TOTAL USER COUNT// DONE
 ////////////////////
 getUserTotal();
 var allUsers;
@@ -72,7 +72,7 @@ function sumUsers(){
 };
 
 //////////////////////
-//TOTAL CLIENT COUNT//
+//TOTAL CLIENT COUNT// DONE
 //////////////////////
 getClientCount();
 var totalClients;
@@ -99,7 +99,7 @@ function orderCount(){
 };
 
 ///////////////
-//SALES TOTAL//
+//SALES TOTAL// DONE +
 ///////////////
 var salesIncrement=0;
 var formatSales;
@@ -131,8 +131,122 @@ function addSalestoPage(){
   })
 };
 
+////////////////////////
+//SALES TIMELINE CHART// can't use both, auto fit and populate
+////////////////////////
+createSalesChart();
+
+$(window).resize(function() {
+  if(this.resizeTO) clearTimeout(this.resizeTO);
+  this.resizeTO = setTimeout(function() {
+      $(this).trigger('resizeEnd');
+  });
+});
+$(window).on('resizeEnd', function() {
+  createSalesChart2();
+});
+
+function createSalesChart2(){
+  createSalesChart();
+};
+
+function createSalesChart(){
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+  function drawChart() {
+    dateCapture=[];
+    chartArray= [['Date','Sales']];
+    // console.log("check scope",totalClients);
+
+    //create x axis//
+    for (i=0; i<totalClients.length; i++){
+      // console.log(totalClients[i].create_date.toString());
+      newdate = totalClients[i].create_date.toString();
+      // console.log(newdate.substring(0,10));
+      if (dateCapture.indexOf(newdate.substring(0,10))<0){
+        dateCapture.push(newdate.substring(0,10));
+      }
+    }
+    // console.log(dateCapture);
+
+    //start building dataSalesChart array
+    chartArray= [['Date','Sales']];
+    for (i=0;i<dateCapture.length;i++){
+      chartArray.push([dateCapture[i],0]);
+    }
+    // console.log(chartArray);
+
+    //add sales into array for each day
+    count=0;
+    for (i=1;i<chartArray.length;i++){
+      dateBin =chartArray[i][0];
+      console.log(dateBin);
+      // count++;
+      // console.log(count);
+      calculateSales();
+    }
+
+    function calculateSales(){
+      for (l=0; l<144; l++){
+        // console.log(totalClients);
+        // console.log("datebin ",dateBin);
+        // console.log("order date ", totalClients[l].create_date.toString().substring(0,10));
+        
+
+        newdate = totalClients[l].create_date.toString();
+        if (chartArray[i][0]===newdate.substring(0,10)){
+          chartArray[i][1]=chartArray[i][1]+(totalClients[l].price*totalClients[l].qty);
+        }
+      }
+    }
+    console.log(chartArray);
+
+var dataSalesChart= chartArray;
+    // var dataSalesChart= [
+    //   ['Date', 'Clicks'],
+    //   ['0',  0],
+    //   ['2002',  1170],
+    //   ['2003',  610],
+    //   ['2004',  1260],
+    //   ['2005',  1560],
+    //   ['2006',  560],
+    //   ['2007',  260],
+    //   ['2008',  1030]
+    // ];
+    var data = google.visualization.arrayToDataTable(dataSalesChart);
+
+    var options = {
+      
+      legend:{position:'none'},
+      hAxis: {
+        baselineColor: 'transparent',
+        // textStyle: {color: 'transparent'}
+      },
+      vAxis: {
+        // textStyle: {color: 'transparent'},
+        baselineColor: 'transparent',
+        minValue: 0,
+        gridlines: {
+        color: 'transparent'
+        }
+      },
+      lineWidth: 2,
+      series: {
+        0: {color:'#ADB227'}
+      }
+    };
+    var salesTimeline = document.querySelectorAll('.sales_chart');
+    // console.log(products);
+
+    salesTimeline.forEach((saleschart)=> {
+      var chart = new google.visualization.AreaChart(saleschart);
+      chart.draw(data, options);
+    });
+  }
+}
+
 ///////////////////////////////////////
-//ADD CHART TO ANALYTICS/PRODUCT PAGE//
+//ADD CHART TO ANALYTICS/PRODUCT PAGE// NOT DONE
 ///////////////////////////////////////
 google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
