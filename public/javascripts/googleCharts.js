@@ -128,14 +128,13 @@ function addSalestoPage(){
   // console.log(clientTotal)
   salesTotal.forEach((salesTotal)=> {
     salesTotal.innerHTML = formatSales;
+    createSalesChart();
   })
 };
 
 ////////////////////////
-//SALES TIMELINE CHART// can't use both, auto fit and populate
+//SALES TIMELINE CHART//
 ////////////////////////
-createSalesChart();
-
 $(window).resize(function() {
   if(this.resizeTO) clearTimeout(this.resizeTO);
   this.resizeTO = setTimeout(function() {
@@ -143,12 +142,8 @@ $(window).resize(function() {
   });
 });
 $(window).on('resizeEnd', function() {
-  createSalesChart2();
-});
-
-function createSalesChart2(){
   createSalesChart();
-};
+});
 
 function createSalesChart(){
   google.charts.load('current', {'packages':['corechart']});
@@ -184,6 +179,7 @@ function createSalesChart(){
       // count++;
       // console.log(count);
       calculateSales();
+      drawProductChart();
     }
 
     function calculateSales(){
@@ -244,6 +240,43 @@ var dataSalesChart= chartArray;
     });
   }
 }
+
+//////////////////////
+//TOP PRODUCTS CHART//
+//////////////////////
+google.charts.load('current', {packages: ['corechart', 'bar']});
+google.charts.setOnLoadCallback(drawProductChart);
+
+function drawProductChart() {
+
+  var data = google.visualization.arrayToDataTable([
+    ['User', 'Sales',{role: 'style'}],
+    ['Benny', 8175000,'stroke-color: #818B75; stroke-width: 2;fill-color: #bed287; color: #818B75' ],
+    ['Bubba', 3792000,'stroke-color: #818B75; stroke-width: 2;fill-color: #bed287; color: #818B75'],
+    ['Fred', 2695000,'stroke-color: #818B75; stroke-width: 2;fill-color: #bed287; color: #818B75'],
+    ['NaeNAe', 2099000,'stroke-color: #818B75; stroke-width: 2;fill-color: #bed287; color: #818B75'],
+    ['Alli-baba', 1526000,'stroke-color: #818B75; stroke-width: 2;fill-color: #bed287; color: #818B75']
+  ]);
+
+  var options = {
+    legend:{position:'none'},
+    height: 300,
+    chartArea: {width: '50%'},
+    hAxis: {
+      baselineColor: 'transparent',
+      minValue: 0
+    },
+    vAxis: {
+    }
+  };
+
+  var chart = new google.visualization.BarChart(document.getElementById('prod_div'));
+
+  chart.draw(data, options);
+    }
+
+
+
 
 ///////////////////////////////////////
 //ADD CHART TO ANALYTICS/PRODUCT PAGE// NOT DONE
