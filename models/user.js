@@ -11,9 +11,10 @@ module.exports = (sequelize, DataTypes) => {
     user_name: DataTypes.STRING,
     company_id: DataTypes.INTEGER,
     password: DataTypes.STRING,
-    user_type: DataTypes.STRING,
+    user_type: DataTypes.BOOLEAN,
     address: DataTypes.STRING,
     zipcode: DataTypes.STRING,
+    active: DataTypes.BOOLEAN,
   });
   // User.associate = function(models) {
   //   User.hasMany(models.Product, {
