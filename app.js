@@ -22,6 +22,7 @@ var analytics = require('./routes/analytics');
 var analyticsprod = require('./routes/analytics');
 var login = require('./routes/login');
 var carts = require('./routes/carts');
+var admin = require('./routes/admin');
 
 var app = express();
 
@@ -41,7 +42,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({secret: 'secret', resave: true, saveUninitialized: true}));
 
 app.use(passport.initialize());
-app.use(passport.session()); 
+app.use(passport.session());
 
 
 app.use(validate({
@@ -80,6 +81,8 @@ app.use('/', analytics);
 app.use('/', analyticsprod);
 app.use('/login', login);
 app.use('/carts', carts);
+app.use('/admin', admin);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

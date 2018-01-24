@@ -33,7 +33,7 @@
                     <div class="chart_div" style="width: 200px; height: 70px;"></div>
                 </div>
             </div>
-        </div> 
+        </div>
         <div class="col-md-1">
             <button id={{id}} class='btn btn-danger delete'>Delete</button>
         </div>
@@ -41,7 +41,7 @@
             <h1>${{price}}</h1>
         </div>
         <br>
-    </div>       
+    </div>
 {{/each}}
 {{#each users}}
     <div class='row prod' id={{id}}>
@@ -53,10 +53,14 @@
                     <h3>{{short_desc}}</h3>
                 </div>
             </div>
-        </div> 
+        </div>
         <br>
-    </div>       
+    </div>
 {{/each}}
+
+<script language="javasscript" src="/javascripts/animations.js"></script>
+    <script type="text/javascript" src="/javascripts/googleCharts.js"></script>
+    <script src="/javascripts/counter.js"></script>
 <script class="javascript">
     $(".buy").on("click", function(event) {
         id = $(this).attr('id');

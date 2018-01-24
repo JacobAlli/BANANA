@@ -21,7 +21,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       user_type: {
-        type: Sequelize.STRING
+        type: Sequelize.BOOLEAN
       },
       address: {
         type: Sequelize.STRING
@@ -29,6 +29,9 @@ module.exports = {
       zipcode: {
         type: Sequelize.STRING
       },
+      active: {
+        type: Sequelize.BOOLEAN
+      }
     });
   },
   down: (queryInterface, Sequelize) => {

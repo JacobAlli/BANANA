@@ -18,6 +18,9 @@ passport.use(new LocalStrategy(
    	if(!user){
    		return done(null, false, {message: 'Unknown User'});
    	}
+    if(user.active === false){
+        return done(null, false, {message: 'Your account has been deactivated by an administrator. LOL'});
+    }
 
    	user.validPassword(password).then((isMatch) => {
    		if(isMatch){
