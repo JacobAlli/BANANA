@@ -1,0 +1,100 @@
+<section class="cart-bg">
+    <div class="container" id="cart-card">
+        <div class="page-header">
+            <div class="row" id="cart-header">
+                <div class="col-md-4">
+                    <h2>Shopping Cart</h2>
+                </div>
+            </div>
+        </div>
+        {{#each carts}}
+        <div class="row cart-item" id="order-content">
+            <div class="col-md-2 text-center">
+                <img src="/assets/img/BananaTV.png" width="150px" height="150px">
+            </div>
+            <div class="col-md-4">
+                <h3><strong>{{short_desc}}</strong></h3>
+            </div>
+            <div class="col-md-2">
+                <div class="input-group spinner">
+                    <input id="qty-id" type="text" class="form-control" value="1">
+                    <div class="input-group-btn-vertical">
+                        <button class="btn btn-default" id="up-btn" type="button">
+                            <i class="fa fa-caret-up"></i>
+                        </button>
+                        <button class="btn btn-default" id="down-btn" type="button">
+                            <i class="fa fa-caret-down"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2" id="price-div" price={{price}}>
+                <h4 class="price-tag"><strong>${{price}}</strong></h4>
+            </div>
+            <div class="col-md-2" id="remove-div">
+                <button type="button" class="btn btn-outline-danger">
+                    <span class="glyphicon glyphicon-trash"></span>
+                    </button>
+            </div>
+        </div>
+        <hr>
+        {{/each}}
+        <div class="row" id="total-box">
+            <div class="col-md-8"></div>
+            <div class="col-md-2">
+                    <h5><strong>Sub-Total: </strong></h5>
+                    <h5 id="totalPrice"><strong>Total: </strong></h5>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+        <div class="row" id="button-container">
+            <div class="col-md-4">
+                <button class="btn-options"><span class="glyphicon glyphicon-chevron-right">Continue Shopping</span></button>
+            </div>
+            <div class="col-md-4">
+                <button class="btn-options"><span class="glyphicon glyphicon-refresh">Update Cart</span></button>
+            </div> 
+            <div class="col-md-4">
+                <button class="btn-options" id="checkout-btn">
+                    <span class="glyphicon glyphicon-shopping-cart">Check Out</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+<script type="text/javascript">
+
+      $('#up-btn').on('click', function() {
+        let quantity = $('#qty-id').attr("value");
+        quantity++;
+        $('#qty-id').attr("value", quantity);
+        updatePrice();
+        // step 1 get the value for the #qty-id input field -> set to variable
+        // add +1 to that value
+        // call the .val() method on the #qty-id input to set the updated value
+
+      });
+      $('#down-btn').on('click', function () {
+            let quantity = $('#qty-id').attr("value");
+            if(quantity > 0) {
+            quantity--;
+            $('#qty-id').attr("value", quantity);
+            }
+            updatePrice();
+      });
+
+      function updatePrice(){
+          var price = $('#price-div').attr('price');
+          var updatedPrice = $('#qty-id').val() * price;
+          var totalPrice = $('#price-div > price').each(function(){
+              $(this) + price;
+          });
+          console.log(totalPrice);
+          $('.totalPrice').html("<strong>" + '$' + totalPrice + "</strong>");
+          $('.price-tag').html("<strong>" + '$' + updatedPrice + "</strong>");
+
+
+      };
+      //when called grab all values then update
+      //loop through every row in cart and set to subtotal
+</script>

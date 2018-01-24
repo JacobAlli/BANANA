@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-    var Order = sequelize.define("Order", {
+    var Cart = sequelize.define("Cart", {
         id: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -8,6 +8,16 @@ module.exports = function (sequelize, DataTypes) {
             validate: {
                 len: [1]
             }
+        },
+        order_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            len: [1]
+        },
+        item_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            len: [1]
         },
         short_desc: {
             type: DataTypes.STRING,
@@ -20,16 +30,6 @@ module.exports = function (sequelize, DataTypes) {
             len: [1]
         },
         user_id: {
-            type: DataTypes.TEXT,
-            allowNull: false,
-            len: [1]
-        },
-        company_id: {
-            type: DataTypes.TEXT,
-            allowNull: false,
-            len: [1]
-        },
-        create_date: {
             type: DataTypes.TEXT,
             allowNull: false,
             len: [1]
@@ -55,5 +55,5 @@ module.exports = function (sequelize, DataTypes) {
             defaultValue: sequelize.literal('NOW()'),
         }
     });
-return Order;
+return Cart;
 };

@@ -20,7 +20,7 @@ var users = require('./routes/users');
 var apis = require('./routes/apis');
 var analytics = require('./routes/analytics');
 var login = require('./routes/login');
-var orders = require('./routes/orders');
+var carts = require('./routes/carts');
 
 var app = express();
 
@@ -77,7 +77,7 @@ app.use('/users', users);
 app.use('/api', apis);
 app.use('/', analytics);
 app.use('/login', login);
-app.use('/orders', orders);
+app.use('/carts', carts);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
