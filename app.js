@@ -21,6 +21,7 @@ var apis = require('./routes/apis');
 var analytics = require('./routes/analytics');
 var analyticsprod = require('./routes/analytics');
 var login = require('./routes/login');
+var carts = require('./routes/carts');
 var admin = require('./routes/admin');
 
 var app = express();
@@ -79,7 +80,9 @@ app.use('/api', apis);
 app.use('/', analytics);
 app.use('/', analyticsprod);
 app.use('/login', login);
+app.use('/carts', carts);
 app.use('/admin', admin);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
