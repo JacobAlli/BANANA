@@ -275,16 +275,21 @@ footer{
 /************/
 .img-circle {
   border-radius: 50%;
-  margin: auto;
+  margin-left: 30%;
+  margin-right: 30%;
+  width: 50%;
+  height: 50%;
 }
 
-img.img-circle {
+img.img-circle{
   margin: auto;
+  margin-left: 25%;
+  margin-right: 25%;
+
 }
 
 .img-circle:hover{
   background: rgba(255, 255, 255, 0.31);
-
 }
 
 /*****************/
@@ -321,23 +326,23 @@ img.img-circle {
 
 .feat {
   background-color: white;
-  width: 97%;
-  height: 370px;
-  margin: auto;
-  margin-top: 10px;
-  margin-top: 10px;
+  width: 100%;
+  height: 400px;
+  margin: 10px;
   padding: 10px;
+  text-align: center;
 }
 
 .oneImg {
-  margin: auto;
-     width: 45%;
-  height: 50%;
+    margin: auto;
+    width: 596px;
+    height: 641px;
+    position: relative;
+    bottom: -100px;
 }
 
 .oneImg img{
    margin: auto;
-
 }
 
 #section1 h1{
@@ -362,7 +367,7 @@ img.img-circle {
 }
 
 #section4 {
-  padding: 50px;
+  text-align: center;
 }
 
 .analyticsThree {
@@ -386,8 +391,9 @@ img.img-circle {
 
 #section4 h2 {
   text-align: center;
-
 }
+
+
 
 /*******************/
 /* ANALYTICS PAGES */
