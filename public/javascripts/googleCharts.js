@@ -18,7 +18,7 @@ function getClicks(){
 function findProductsOnPage(){
   var products = document.querySelectorAll('.clicksArea');
   // console.log(allClicks);
-   console.log("gotem" , products);
+   //console.log("products on page!" , products);
   
   products.forEach((product)=> {
     var prodID= parseInt(product.attributes.prodid.nodeValue);
@@ -116,9 +116,9 @@ function salesTotal(){
     // console.log("summed ", sum);
     salesIncrement=salesIncrement+sum;
   });
-  console.log(salesIncrement);
+  ///console.log(salesIncrement);
   formatSales = "$"+salesIncrement;
-  console.log(formatSales);
+  ///console.log(formatSales);
   addSalestoPage();
 };
 
@@ -143,11 +143,16 @@ $(window).resize(function() {
 });
 $(window).on('resizeEnd', function() {
   createSalesChart();
+  drawProductBAR();
+  drawUserBAR();
+  drawOrderBAR();
 });
 
 function createSalesChart(){
+
   google.charts.load('current', {'packages':['corechart']});
   google.charts.setOnLoadCallback(drawChart);
+  
   function drawChart() {
     dateCapture=[];
     chartArray= [['Date','Sales']];
@@ -156,48 +161,49 @@ function createSalesChart(){
     //create x axis//
     for (i=0; i<totalClients.length; i++){
       // console.log(totalClients[i].create_date.toString());
-      newdate = totalClients[i].create_date.toString();
+      newdate = totalClients[i].createdAt.toString();
       // console.log(newdate.substring(0,10));
       if (dateCapture.indexOf(newdate.substring(0,10))<0){
         dateCapture.push(newdate.substring(0,10));
       }
     }
-    // console.log(dateCapture);
+      // console.log(dateCapture);
 
     //start building dataSalesChart array
-    chartArray= [['Date','Sales']];
+    basicArray= [['Date','Sales']];
     for (i=0;i<dateCapture.length;i++){
-      chartArray.push([dateCapture[i],0]);
+      basicArray.push([dateCapture[i],0]);
     }
-    // console.log(chartArray);
+    // console.log(basicArray);
 
     //add sales into array for each day
     count=0;
-    for (i=1;i<chartArray.length;i++){
-      dateBin =chartArray[i][0];
-      console.log(dateBin);
-      // count++;
-      // console.log(count);
+    for (i=1;i<basicArray.length;i++){
+      dateBin =basicArray[i][0];
+      
       calculateSales();
-      drawProductChart();
     }
-
+    
+     
+    
     function calculateSales(){
-      for (l=0; l<144; l++){
-        // console.log(totalClients);
-        // console.log("datebin ",dateBin);
-        // console.log("order date ", totalClients[l].create_date.toString().substring(0,10));
+      for (l=0; l<totalClients.length; l++){
+        newdate = totalClients[l].createdAt.toString();
+        console.log(dateBin);
+        console.log("newdate",newdate.substring(0,10));
         
-
-        newdate = totalClients[l].create_date.toString();
-        if (chartArray[i][0]===newdate.substring(0,10)){
-          chartArray[i][1]=chartArray[i][1]+(totalClients[l].price*totalClients[l].qty);
+        if (basicArray[i][0]===newdate.substring(0,10)){
+          // console.log("chartarray",chartArray[i][0]);
+          basicArray[i][1]=basicArray[i][1]+(totalClients[l].price*totalClients[l].qty);
+        }else{
+          // console.log("chartarray",chartArray[i][0]);
         }
       }
     }
-    console.log(chartArray);
 
-var dataSalesChart= chartArray;
+//     ///console.log(chartArray);
+
+var dataSalesChart= basicArray;
     // var dataSalesChart= [
     //   ['Date', 'Clicks'],
     //   ['0',  0],
@@ -237,6 +243,9 @@ var dataSalesChart= chartArray;
     salesTimeline.forEach((saleschart)=> {
       var chart = new google.visualization.AreaChart(saleschart);
       chart.draw(data, options);
+      drawProductBAR();
+      drawUserBAR();
+      drawOrderBAR();
     });
   }
 }
@@ -245,22 +254,69 @@ var dataSalesChart= chartArray;
 //TOP PRODUCTS CHART//
 //////////////////////
 google.charts.load('current', {packages: ['corechart', 'bar']});
-google.charts.setOnLoadCallback(drawProductChart);
+google.charts.setOnLoadCallback(drawProductBAR);
 
-function drawProductChart() {
+function drawProductBAR() {
+// console.log(totalClients);
+var ordersArray=[];
 
-  var data = google.visualization.arrayToDataTable([
-    ['User', 'Sales',{role: 'style'}],
-    ['Benny', 8175000,'stroke-color: #818B75; stroke-width: 2;fill-color: #bed287; color: #818B75' ],
-    ['Bubba', 3792000,'stroke-color: #818B75; stroke-width: 2;fill-color: #bed287; color: #818B75'],
-    ['Fred', 2695000,'stroke-color: #818B75; stroke-width: 2;fill-color: #bed287; color: #818B75'],
-    ['NaeNAe', 2099000,'stroke-color: #818B75; stroke-width: 2;fill-color: #bed287; color: #818B75'],
-    ['Alli-baba', 1526000,'stroke-color: #818B75; stroke-width: 2;fill-color: #bed287; color: #818B75']
-  ]);
+//create x axis//
+for (i=0; i<totalClients.length; i++){
+  // console.log(totalClients[i].create_date.toString());
+  newProduct = totalClients[i].short_desc.toString();
+  // console.log(newdate.substring(0,10));
+  if (ordersArray.indexOf(newProduct)<0){
+    ordersArray.push(newProduct);
+  }
+}
+// console.log(ordersArray);
+
+//start building dataSalesChart array
+prodChartArray= [];
+for (i=0;i<ordersArray.length;i++){
+  prodChartArray.push([ordersArray[i],0,'stroke-color: #818B75; stroke-width: 2;fill-color: #bed287; color: #818B75']);
+}
+// console.log(prodChartArray);
+
+//add sales into array for each day
+count=0;
+for (i=1;i<prodChartArray.length;i++){
+  distinctItem =prodChartArray[i][0];
+  calculateProdSales();
+}
+
+function calculateProdSales(){
+  for (l=0; l<totalClients.length; l++){
+    distinctItem = totalClients[l].short_desc.toString();
+    if (prodChartArray[i][0]===distinctItem){
+      prodChartArray[i][1]=prodChartArray[i][1]+(totalClients[l].price*totalClients[l].qty);
+    }
+  }
+}
+//console.log(prodChartArray);
+
+//order array
+
+prodChartArray.sort(function(a,b){
+  return b[1]-a[1];
+});
+///console.log(prodChartArray);
+ 
+//grab top 10
+topProductsArray =[];
+for (i=0;i<10;i++){
+  topProductsArray.push(prodChartArray[i]);
+}
+///console.log(topProductsArray);
+//add header
+var header = ['User', 'Sales',{role: 'style'}];
+topProductsArray.unshift(header);
+
+var data= google.visualization.arrayToDataTable(topProductsArray);
 
   var options = {
     legend:{position:'none'},
-    height: 300,
+    height: 600,
     chartArea: {width: '50%'},
     hAxis: {
       baselineColor: 'transparent',
@@ -275,6 +331,180 @@ function drawProductChart() {
   chart.draw(data, options);
     }
 
+///////////////////
+//TOP Users CHART//
+///////////////////
+google.charts.load('current', {packages: ['corechart', 'bar']});
+google.charts.setOnLoadCallback(drawProductBAR);
+
+function drawUserBAR() {
+// console.log(totalClients);
+var topUArray=[];
+
+//create x axis//
+for (i=0; i<totalClients.length; i++){
+  distUser = totalClients[i].user_id.toString();
+  // console.log(newdate.substring(0,10));
+  if (topUArray.indexOf(distUser)<0){
+    topUArray.push(distUser);
+  }
+}
+//  console.log(topUArray);
+
+//start building dataSalesChart array
+userChartArray= [];
+for (i=0;i<topUArray.length;i++){
+  userChartArray.push([topUArray[i],0,'stroke-color: #818B75; stroke-width: 2;fill-color: #bed287; color: #818B75']);
+}
+//  console.log(userChartArray);
+
+//add sales into array for each day
+count=0;
+for (i=1;i<userChartArray.length;i++){
+  distinctItem =userChartArray[i][0];
+  calculateUserSales();
+}
+
+function calculateUserSales(){
+  for (l=0; l<totalClients.length; l++){
+    distinctItem = totalClients[l].user_id.toString();
+    if (userChartArray[i][0]===distinctItem){
+      userChartArray[i][1]=userChartArray[i][1]+(totalClients[l].price*totalClients[l].qty);
+    }
+  }
+}
+//  console.log(userChartArray);
+
+//order array
+
+userChartArray.sort(function(a,b){
+  return b[1]-a[1];
+});
+//  console.log(userChartArray);
+ 
+//grab top 10
+topUsersArray =[];
+for (i=0;i<15;i++){
+  topUsersArray.push(userChartArray[i]);
+}
+//  console.log(topUsersArray);
+//add header
+var header = ['User', 'Sales',{role: 'style'}];
+var finalUserArray=[];
+topUsersArray.unshift(header);
+for (i=0;i<9;i++){
+  finalUserArray.push(topUsersArray[i]);
+}
+
+// console.log(finalUserArray);
+
+
+var data= google.visualization.arrayToDataTable(finalUserArray);
+
+  var options = {
+    legend:{position:'none'},
+    height: 600,
+    chartArea: {width: '50%'},
+    hAxis: {
+      baselineColor: 'transparent',
+      minValue: 0
+    },
+    vAxis: {
+    }
+  };
+
+  var chart = new google.visualization.BarChart(document.getElementById('user_div'));
+
+  chart.draw(data, options);
+    }
+
+
+///////////////////
+//TOP Orders CHART//
+///////////////////
+google.charts.load('current', {packages: ['corechart', 'bar']});
+google.charts.setOnLoadCallback(drawProductBAR);
+
+function drawOrderBAR() {
+// console.log(totalClients);
+var topOArray=[];
+
+//create x axis//
+for (i=0; i<totalClients.length; i++){
+  distOrder = totalClients[i].id.toString();
+  // console.log(newdate.substring(0,10));
+  if (topOArray.indexOf(distOrder)<0){
+    topOArray.push(distOrder);
+  }
+}
+//  console.log(topOArray);
+
+//start building dataSalesChart array
+orderChartArray= [];
+for (i=0;i<topOArray.length;i++){
+  orderChartArray.push([topOArray[i],0,'stroke-color: #818B75; stroke-width: 2;fill-color: #bed287; color: #818B75']);
+}
+//  console.log(orderChartArray);
+
+//add sales into array for each day
+count=0;
+for (i=1;i<orderChartArray.length;i++){
+  distinctItem =orderChartArray[i][0];
+  calculateOrderSales();
+}
+
+function calculateOrderSales(){
+  for (l=0; l<totalClients.length; l++){
+    distinctItem = totalClients[l].id.toString();
+    if (orderChartArray[i][0]===distinctItem){
+      orderChartArray[i][1]=orderChartArray[i][1]+(totalClients[l].price*totalClients[l].qty);
+    }
+  }
+}
+//  console.log(orderChartArray);
+
+//order array
+
+orderChartArray.sort(function(a,b){
+  return b[1]-a[1];
+});
+//  console.log(orderChartArray);
+ 
+//grab top 10
+topOrdersArray =[];
+for (i=0;i<15;i++){
+  topOrdersArray.push(orderChartArray[i]);
+}
+//  console.log(topOrdersArray);
+//add header
+var header = ['User', 'Sales',{role: 'style'}];
+var finalOrderArray=[];
+topOrdersArray.unshift(header);
+for (i=0;i<11;i++){
+  finalOrderArray.push(topOrdersArray[i]);
+}
+
+// console.log(finalOrderArray);
+
+
+var data= google.visualization.arrayToDataTable(finalOrderArray);
+
+  var options = {
+    legend:{position:'none'},
+    height: 600,
+    chartArea: {width: '50%'},
+    hAxis: {
+      baselineColor: 'transparent',
+      minValue: 0
+    },
+    vAxis: {
+    }
+  };
+
+  var chart = new google.visualization.BarChart(document.getElementById('order_div'));
+
+  chart.draw(data, options);
+    }
 
 
 
