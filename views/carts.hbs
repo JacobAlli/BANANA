@@ -62,8 +62,8 @@
         });
 
         $('.qty-id').on('click', function(){
-            
-            updatePrice();
+            var el = this;
+            updatePrice(el);
             updateDataAttributes();
 
         });
@@ -73,19 +73,19 @@
         $('#update-btn').on('click', updateCartModel);
 
         
-        function updatePrice(){
+        function updatePrice(el){
 
-          var itemPriceTotal = parseInt(this.parentElement.parentElement.parentElement.children[3].children[0].innerText);
+          var itemPriceTotal = parseInt(el.parentElement.parentElement.parentElement.children[3].children[0].innerText);
 
-          var individualPrice = parseInt(this.parentElement.parentElement.parentElement.children[3].attributes.price.value);
+          var individualPrice = parseInt(el.parentElement.parentElement.parentElement.children[3].attributes.price.value);
 
-          var newPrice = individualPrice * parseInt(this.value);
+          var newPrice = individualPrice * parseInt(el.value);
 
           itemPriceTotal = newPrice;
 
           console.log(itemPriceTotal);
 
-          this.parentElement.parentElement.parentElement.children[3].children[0].innerHTML = `<strong>$${itemPriceTotal}</strong>`;
+          el.parentElement.parentElement.parentElement.children[3].children[0].innerHTML = `<strong>$${itemPriceTotal}</strong>`;
 
         }
 
