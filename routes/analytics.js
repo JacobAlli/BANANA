@@ -32,20 +32,20 @@ router.get('/analytics/products', function(req, res, next) {
 });
 
 router.post("/add/cart", function (req, res) {
-  // console.log(req.body);
+  console.log(req.body);
   db.Cart.create({
-    order_id: 1,
-    item_id: 1,
-    short_desc: "Banana",
-    category_id: 3,
-    user_id: 2,
-    price: 350,
+    order_id: parseInt(req.body.id),
+    item_id: parseInt(req.body.id),
+    short_desc: req.body.short_desc,
+    category_id: parseInt(req.body.category_id),
+    user_id: req.body.user_id,
+    price: req.body.price,
     qty: 1
   })
   .then((cart)=> {
     console.log(req.body.id);
     console.log('added product to cart');
-    alert("added product to cart");
+    
     // });
     res.sendStatus(200);
   });

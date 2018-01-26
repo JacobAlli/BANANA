@@ -62,49 +62,83 @@
 
     var ourItems;
     var product;
+    var allOrders;
+
     var currentItem;
-
+    var prodid;
+    var allProducts=[];
+    var userid;
     $(".buy").on("click", function (event) {
-                id = $(this).attr('id');
-                console.log($(this).attr('id'));
+        prodid = $(this).attr('id');
+        getProducts();
+        function getProducts(){
             // Send the PUT request.
-                $.ajax("/api/products", {
-                    type: "GET",
-                    success: 
-                    function (data) {
+            $.ajax("/api/products", {
+                type: "GET"
+            }).then(
+                function(data) {
+                    allProducts = data;
+                    //console.log(allProducts);
+                findSpecificItem();
+                }
+            );
+        };
+
+
+        function findSpecificItem(){
+            console.log("products came back...",allProducts);
+            for( i = 0; i < allProducts.length; i++){
+                console.log(allProducts[i].id.toString());
+                console.log(prodid);
+                if(allProducts[i].id.toString() === prodid){
+                    currentItem = allProducts[i];
+                    //console.log(currentItem);
                     
-                        for( i = 0; i < data.length; i++){
-                           if(data[i].id.toString() === id){
-                               currentItem = data[i];
-                               return currentItem;
-                               console.log(currentItem);
-                           } 
-                        }
+                }
+            }
+            setUpPostObj();
+        };
 
-                        ourItems = data;
-                    }
-                })
-                console.log(currentItem);
-                 product = {
-                    id: $(this).attr('id'),
-                    short_desc: currentItem.short_desc,
-                    category_id: currentItem.category_id,
-                    user_id: currentItem.user_id,
-                    price: currentItem.price,
-                    qty: currentItem.qty
-                    };
-                    console.log(product);
+        function setUpPostObj(){ 
+            console.log('scoped',currentItem);
+            $.ajax("/api/clicks", {
+                type: "get"
+            }).then(
+                function (data) {
+                    userid=data.user.id;
+                    console.log('userid is right',userid);
+                    buildPostObj();
+                }
+            );
+        }
 
-                // Send the PUT request.
-                $.ajax("/add/cart/", {
-                    type: "POST",
-                    data: product
-                }).then(
-                    function () {
-                        console.log("adding click");
-                    }
-                    );
-            });
+        function buildPostObj(){
+            
+            product = {
+                id: currentItem.id,
+                short_desc: currentItem.short_desc,
+                category_id: currentItem.category_id,
+                user_id: userid,
+                price: currentItem.price,
+                qty: 1
+            };
+            console.log('ready up for AJAX',product);
+        postBuytoCart();
+        };
+
+        function postBuytoCart(){
+            // Send the PUT request.
+            $.ajax("/add/cart/", {
+                type: "POST",
+                data: product
+            }).then(
+                function () {
+                    alert("added product to cart");
+
+                }
+            );
+        }
+    });
 </script>
 {{/if}}
 {{#unless user}}
