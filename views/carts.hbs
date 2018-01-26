@@ -49,10 +49,10 @@
         </div>
         <div class="row" id="button-container">
             <div class="col-md-4">
-                <button class="btn-options"><span class="glyphicon glyphicon-chevron-right">Continue Shopping</span></button>
+                <button class="btn-options" id="continue-btn"><span class="glyphicon glyphicon-chevron-right">Continue Shopping</span></button>
             </div>
             <div class="col-md-4">
-                <button class="btn-options"><span class="glyphicon glyphicon-refresh">Update Cart</span></button>
+                <button class="btn-options" id="update-btn"><span class="glyphicon glyphicon-refresh">Update Cart</span></button>
             </div> 
             <div class="col-md-4">
                 <button class="btn-options" id="checkout-btn">
@@ -62,7 +62,10 @@
         </div>
     </div>
 </section>
+<script type="text/javascript" src="/javascripts/carts.js"></script>
 <script type="text/javascript">
+
+
 
       $('#up-btn').on('click', function() {
         let quantity = $('#qty-id').attr("value");

@@ -59,6 +59,52 @@
       }
     );
     });
+
+    var ourItems;
+    var product;
+    var currentItem;
+
+    $(".buy").on("click", function (event) {
+                id = $(this).attr('id');
+                console.log($(this).attr('id'));
+            // Send the PUT request.
+                $.ajax("/api/products", {
+                    type: "GET",
+                    success: 
+                    function (data) {
+                    
+                        for( i = 0; i < data.length; i++){
+                           if(data[i].id.toString() === id){
+                               currentItem = data[i];
+                               return currentItem;
+                               console.log(currentItem);
+                           } 
+                        }
+
+                        ourItems = data;
+                    }
+                })
+                console.log(currentItem);
+                 product = {
+                    id: $(this).attr('id'),
+                    short_desc: currentItem.short_desc,
+                    category_id: currentItem.category_id,
+                    user_id: currentItem.user_id,
+                    price: currentItem.price,
+                    qty: currentItem.qty
+                    };
+                    console.log(product);
+
+                // Send the PUT request.
+                $.ajax("/add/cart/", {
+                    type: "POST",
+                    data: product
+                }).then(
+                    function () {
+                        console.log("adding click");
+                    }
+                    );
+            });
 </script>
 {{/if}}
 {{#unless user}}
