@@ -10,4 +10,13 @@ router.get('/', function (req, res) {
         res.render("carts", {carts: carts});    
     });
 });
+
+router.delete('/', function (req, res) {
+    db.Cart.destroy({})
+    .then(function(carts){
+        console.log(carts);
+        res.json(carts);    
+    });
+});
+
 module.exports = router;

@@ -30,7 +30,7 @@ router.get('/clicks', function(req, res){
   attributes: ['product_id',[db.sequelize.fn('COUNT', db.sequelize.col('id')), 'clickCount']],
   group: 'product_id'
   }).then((result) => {
-    res.json({clicks:result, user: req.user.user_name});
+    res.json({clicks:result, user: req.user});
 
   });
 });

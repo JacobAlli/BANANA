@@ -15,6 +15,9 @@ function getClicks(){
   );
 };
 
+
+
+
 function findProductsOnPage(){
   var products = document.querySelectorAll('.clicksArea');
   // console.log(allClicks);
@@ -556,3 +559,5 @@ google.charts.load('current', {'packages':['corechart']});
         });
 
       }
+
+
