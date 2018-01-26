@@ -15,6 +15,10 @@ router.get('/', function (req, res) {
     });
 });
 
+router.post('/update', function(req, res){
+	res.send('SUP');
+});
+
 // router.delete('/', function(req, res) {
 //     db.Cart.destroy({
 //         where: {

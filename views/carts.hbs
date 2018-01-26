@@ -8,7 +8,7 @@
             </div>
         </div>
         {{#each carts}}
-        <div class="row cart-item" id="order-content">
+        <div class="row cart-item" id="order-content" data-cartID="{{id}}" data-itemID="{{item_id}}" data-userID="{{user_id}}" data-qty="{{qty}}" data-price={{price}}>
             <div class="col-md-2 text-center">
                 <img src="/assets/img/BananaTV.png" width="150px" height="150px">
             </div>
@@ -17,21 +17,13 @@
             </div>
             <div class="col-md-2">
                 <div class="input-group spinner">
-                    <input id="qty-id" type="text" class="form-control" value="1">
-                    <div class="input-group-btn-vertical">
-                        <button class="btn btn-default" id="up-btn" type="button">
-                            <i class="fa fa-caret-up"></i>
-                        </button>
-                        <button class="btn btn-default" id="down-btn" type="button">
-                            <i class="fa fa-caret-down"></i>
-                        </button>
-                    </div>
+                    <input type="number" class="form-control qty-id" value="1">
                 </div>
             </div>
-            <div class="col-md-2" id="price-div" price={{price}}>
+            <div class="col-md-2 price-div" price={{price}}>
                 <h4 class="price-tag"><strong>${{price}}</strong></h4>
             </div>
-            <div class="col-md-2" id="remove-div">
+            <div class="col-md-2 remove-div">
                 <button type="button" class="btn btn-outline-danger">
                     <span class="glyphicon glyphicon-trash"></span>
                     </button>
@@ -65,39 +57,82 @@
 <script type="text/javascript" src="/javascripts/carts.js"></script>
 <script type="text/javascript">
 
+        $(document).ready(function(){
+            calculateTotals();
+        });
 
-
-      $('#up-btn').on('click', function() {
-        let quantity = $('#qty-id').attr("value");
-        quantity++;
-        $('#qty-id').attr("value", quantity);
-        updatePrice();
-        // step 1 get the value for the #qty-id input field -> set to variable
-        // add +1 to that value
-        // call the .val() method on the #qty-id input to set the updated value
-
-      });
-      $('#down-btn').on('click', function () {
-            let quantity = $('#qty-id').attr("value");
-            if(quantity > 0) {
-            quantity--;
-            $('#qty-id').attr("value", quantity);
-            }
+        $('.qty-id').on('click', function(){
+            
             updatePrice();
-      });
+            updateDataAttributes();
 
-      function updatePrice(){
-          var price = $('#price-div').attr('price');
-          var updatedPrice = $('#qty-id').val() * price;
-          var totalPrice = $('#price-div > price').each(function(){
-              $(this) + price;
-          });
-          console.log(totalPrice);
-          $('.totalPrice').html("<strong>" + '$' + totalPrice + "</strong>");
-          $('.price-tag').html("<strong>" + '$' + updatedPrice + "</strong>");
+        });
+
+        $('.qty-id').on('keyup keydown click change', calculateTotals);
+
+        $('#update-btn').on('click', updateCartModel);
+
+        
+        function updatePrice(){
+
+          var itemPriceTotal = parseInt(this.parentElement.parentElement.parentElement.children[3].children[0].innerText);
+
+          var individualPrice = parseInt(this.parentElement.parentElement.parentElement.children[3].attributes.price.value);
+
+          var newPrice = individualPrice * parseInt(this.value);
+
+          itemPriceTotal = newPrice;
+
+          console.log(itemPriceTotal);
+
+          this.parentElement.parentElement.parentElement.children[3].children[0].innerHTML = `<strong>$${itemPriceTotal}</strong>`;
+
+        }
+
+        function updateDataAttributes(){
+            var cartRows = document.querySelectorAll('.row.cart-item');
+        }
+
+        function calculateTotals(){
+            var subTotal = document.querySelector('#total-box').children[1].children[0];
+            var Total = document.querySelector('#total-box').children[1].children[1];
+
+            var itemPriceTotals = document.querySelectorAll('.price-tag');
+
+            console.log(itemPriceTotals);
+
+            var subtotalCalc = null;
+
+            itemPriceTotals.forEach((total) => {
+                
+                price = parseInt(total.children[0].innerText.split('$')[1]);
+
+                subtotalCalc += price;
+
+                console.log(subtotalCalc);
+            });
+
+            subTotal.innerHTML = `<strong>Sub-Total: $${Math.floor(subtotalCalc)} </strong>`;
+            Total.innerHTML = `<strong>Total: $${Math.floor(subtotalCalc * 1.08)} </strong>`;
+        }
+
+        function updateCartModel(){
+            
+            var dataForServer =[];
+
+            var cartRows = document.querySelectorAll('.row.cart-item');
+
+            console.log(cartRows);
+
+            $.ajax({
+                url: 'carts/update',
+                method: 'POST',
+            }).done((data) =>{
+                console.log(data);
+                // window.location = '/carts';
+            });
+        }
 
 
-      };
-      //when called grab all values then update
-      //loop through every row in cart and set to subtotal
+
 </script>
