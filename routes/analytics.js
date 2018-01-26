@@ -30,5 +30,27 @@ router.get('/analytics/products', function(req, res, next) {
     console.log(products[0]);
   });
 });
+
+router.post("/add/cart", function (req, res) {
+  console.log(req.body);
+  db.Cart.create({
+    order_id: parseInt(req.body.id),
+    item_id: parseInt(req.body.id),
+    short_desc: req.body.short_desc,
+    category_id: parseInt(req.body.category_id),
+    user_id: req.body.user_id,
+    price: req.body.price,
+    qty: 1
+  })
+  .then((cart)=> {
+    console.log(req.body.id);
+    console.log('added product to cart');
+    
+    // });
+    res.sendStatus(200);
+  });
+  // function(result) {
+});
+
 module.exports = router;
 

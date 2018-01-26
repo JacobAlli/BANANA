@@ -30,19 +30,29 @@ router.get('/clicks', function(req, res){
   attributes: ['product_id',[db.sequelize.fn('COUNT', db.sequelize.col('id')), 'clickCount']],
   group: 'product_id'
   }).then((result) => {
-    res.json({clicks:result, user: req.user.user_name});
+    res.json({clicks:result, user: req.user});
 
   });
 });
 
 //localhost:3000/api/orders
 router.get('/orders', function(req, res){
-  db.Order.findAll({
+  db.Cart.findAll({
   // attributes: ['product_id',[db.sequelize.fn('COUNT', db.sequelize.col('id')), 'clickCount']],
   // group: 'product_id'
   }).then((result) => {
     res.json(result);
 
+  });
+});
+
+router.delete("/orders/:id", function (req, res) {
+  db.Cart.destroy({
+    where: {
+      id: req.params.id
+    }
+  }).then(function (dbCart) {
+    res.json(dbCart);
   });
 });
 module.exports = router;
