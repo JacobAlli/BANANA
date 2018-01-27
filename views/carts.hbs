@@ -1,0 +1,197 @@
+<section class="cart-bg">
+    <div class="container" id="cart-card">
+        <div class="page-header">
+            <div class="row" id="cart-header">
+                <div class="col-md-4">
+                    <h2>Shopping Cart</h2>
+                </div>
+            </div>
+        </div>
+        {{#each carts}}
+        <div class="row cart-item" id="order-content" data-cartID="{{id}}" data-itemID="{{item_id}}" data-userID="{{user_id}}" data-qty="{{qty}}" data-price={{price}}>
+            <div class="col-md-2 text-center">
+                <img src="/assets/img/BananaTV.png" width="150px" height="150px">
+            </div>
+            <div class="col-md-4">
+                <h5><strong>{{short_desc}}</strong></h5>
+            </div>
+            <div class="col-md-2">
+                <div class="input-group spinner">
+                    <input min="1" max="20" type="number" class="form-control qty-id" value="{{qty}}">
+                </div>
+            </div>
+            <div class="col-md-2 price-div" price={{price}}>
+                <h4 class="price-tag"><strong>${{totalPrice}}</strong></h4>
+            </div>
+            <div class="col-md-2 remove-div">
+                <button data-id="{{id}}" type="button" class="btn btn-outline-danger">
+                    <i class="fa fa-bomb" aria-hidden="true"></i>
+                    </button>
+            </div>
+        </div>
+        <hr>
+        {{/each}}
+        <div class="row" id="total-box">
+            <div class="col-md-8"></div>
+            <div class="col-md-2">
+                    <h5><strong>Sub-Total: </strong></h5>
+                    <h5 id="totalPrice"><strong>Total: </strong></h5>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+        <div class="row" id="button-container">
+            <div class="col-md-4">
+                <button class="btn-options" id="continue-btn"><span class="glyphicon glyphicon-chevron-right">Continue Shopping</span></button>
+            </div>
+            <div class="col-md-4">
+                <button class="btn-options" id="update-btn"><span class="glyphicon glyphicon-refresh">Update Cart</span></button>
+            </div> 
+            <div class="col-md-4">
+                <button class="btn-options" id="checkout-btn">
+                    <span class="glyphicon glyphicon-shopping-cart">Check Out</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+<script type="text/javascript" src="/javascripts/carts.js"></script>
+<script type="text/javascript">
+
+        $(document).ready(function(){
+            calculateTotals();
+        });
+
+        $('.qty-id').on('keyup keydown change click', function(){
+            var el = [this];
+            updatePrice(el);
+            updateDataAttribute(el);
+
+        });
+
+        $('.qty-id').on('keyup keydown click change', calculateTotals);
+
+        $('#update-btn').on('keyup keydown change click', updateCartModel);
+
+        $('.btn.btn-outline-danger').on('click', deleteCartItem);
+
+        $('#checkout-btn').on('click', checkoutAndCreateOrder);
+
+        
+        function updatePrice(el){
+
+            el.forEach((el) => {
+
+                var itemPriceTotal = parseInt(el.parentElement.parentElement.parentElement.children[3].children[0].innerText);
+
+                var individualPrice = parseInt(el.parentElement.parentElement.parentElement.children[3].attributes.price.value);
+
+                var newPrice = individualPrice * parseInt(el.value);
+
+                itemPriceTotal = newPrice;
+
+                console.log(itemPriceTotal);
+
+                el.parentElement.parentElement.parentElement.children[3].children[0].innerHTML = `<strong>$${itemPriceTotal}</strong>`;
+            });
+
+        }
+
+        function updateDataAttribute(el){
+            el.forEach((el) => {
+
+                var dataset = el.parentElement.parentElement.parentElement.dataset;
+                console.log(dataset.qty);
+                dataset.qty = el.value;
+                
+            });
+        }
+
+        function calculateTotals(){
+            var subTotal = document.querySelector('#total-box').children[1].children[0];
+            var Total = document.querySelector('#total-box').children[1].children[1];
+            var rows = document.querySelectorAll('.row.cart-item');
+            var itemPriceTotals = document.querySelectorAll('.price-tag');
+
+            console.log(itemPriceTotals);
+
+            var subtotalCalc = null;
+
+            itemPriceTotals.forEach((total, index) => {
+                
+                price = parseInt(total.children[0].innerText.split('$')[1]);
+
+                subtotalCalc += price;
+
+                console.log(subtotalCalc);
+            });
+
+            subTotal.innerHTML = `<strong>Sub-Total: $${Math.floor(subtotalCalc)} </strong>`;
+            Total.innerHTML = `<strong>Total: $${Math.floor(subtotalCalc * 1.08)} </strong>`;
+        }
+
+        function updateCartModel(){
+            
+            var dataForServer = [];
+            var cartRows = document.querySelectorAll('.row.cart-item');
+
+            cartRows.forEach((row) => {
+                var dataObject = {};
+
+                dataObject.cartID = row.dataset.cartid;
+                dataObject.itemID = row.dataset.itemid;
+                dataObject.userID = row.dataset.userid;
+                dataObject.qty = row.dataset.qty;
+                dataObject.price = row.dataset.price;
+
+                console.log(dataObject);
+                dataForServer.push(dataObject);
+            });
+
+            console.log(dataForServer);
+
+            $.ajax({
+                url: 'carts/update',
+                method: 'POST',
+                data: {'data': dataForServer},
+            
+            }).done((data) =>{
+                console.log(data);
+                window.location = '/carts';
+            });
+        }
+
+        function deleteCartItem(){
+            var data = this.dataset.id;
+
+            $.ajax({
+                url: 'carts/remove',
+                method: 'POST',
+                data: {data},
+            }).done((data) => {
+                console.log(data);
+                window.location = `/${data}`;
+
+            });
+        }
+
+        function checkoutAndCreateOrder(){
+            var totalPriceElement = document.querySelector('#totalPrice');
+
+            var totalPrice = parseInt(totalPriceElement.children[0].innerText.split('$')[1]);
+
+            $.ajax({
+                url: 'carts/checkout',
+                method: 'POST',
+                data: {totalPrice},
+            }).done((data) => {
+                console.log(data);
+                window.location = data.location;
+                alert(`Thanks for your purchase, your order id is ${data.order.id} and you spent ${data.order.price}`);
+            });
+        }
+
+
+
+
+
+</script>
