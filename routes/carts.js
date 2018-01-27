@@ -4,7 +4,11 @@ var router = express.Router();
 var db = require("../models");
 
 router.get('/', function (req, res) {
-    db.Cart.findAll({})
+    db.Cart.findAll({
+        where: {
+            user_id: 1
+        }
+    })
     .then(function(carts){
         console.log(carts);
         res.render("carts", {carts: carts});    
@@ -19,4 +23,19 @@ router.delete('/', function (req, res) {
     });
 });
 
+router.post('/update', function(req, res){
+	res.send('SUP');
+});
+
+// router.delete('/', function(req, res) {
+//     db.Cart.destroy({
+//         where: {
+//             user_id: 1
+//         }
+//     })
+//     .then(function(carts) {
+//         console.log(carts);
+//         res.render("carts", {carts: carts});
+//     });
+// });
 module.exports = router;
