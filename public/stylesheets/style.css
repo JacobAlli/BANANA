@@ -522,6 +522,14 @@ margin: auto;
   text-transform:uppercase
 }
 
+.clicksArea{
+  font:500 100px Lato;
+  letter-spacing:2px;
+  padding:5px !important;
+  color:#222B31 !important;
+  text-transform:uppercase
+}
+
 /************/
 /* CART PAGE*/
 /************/
