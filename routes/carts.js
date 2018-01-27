@@ -78,6 +78,10 @@ router.post('/checkout', function(req, res){
 
     db.Order.create({
     	short_desc: 'your order lolol',
+        category_id: 1,
+        create_date: 1,
+        company_id: 1,
+        qty: 1,
     	user_id: req.user.id, 
     	price: req.body.totalPrice}
     ).then((order) => {
