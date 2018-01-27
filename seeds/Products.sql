@@ -26,9 +26,9 @@ values ('Banana AirPods',2,1,1,'./assets/img/BlackBanana.png',now(),50,now(),now
 insert into products (short_desc, category_id, created_by, company_id,url, create_date, price, createdAt,updatedAt)
 values ('Magic Banana 2',2,1,1,'./assets/img/BlackBanana.png',now(),69,now(),now());
 insert into products (short_desc, category_id, created_by, company_id,url, create_date, price, createdAt,updatedAt)
-values ('Banana Touch (6th gen) (16 GB and 64 GB)',3,1,1,'./assets/img/BananaComp.png',now(),199,now(),now());
+values ('Banana Touch (6th gen) (16 GB and 64 GB)',3,1,1,'./assets/img/BananaComp1.png',now(),199,now(),now());
 insert into products (short_desc, category_id, created_by, company_id,url, create_date, price, createdAt,updatedAt)
-values ('Banana Touch (6th gen) (32 GB and 128 GB)',3,1,1,'./assets/img/BananaComp.png',now(),199,now(),now());
+values ('Banana Touch (6th gen) (32 GB and 128 GB)',3,1,1,'./assets/img/BananaComp1.png',now(),199,now(),now());
 insert into products (short_desc, category_id, created_by, company_id,url, create_date, price, createdAt,updatedAt)
 values ('Banana TV (4th generation) (32 GB)',4,1,1,'./assets/img/BananaTV.png',now(),999,now(),now());
 insert into products (short_desc, category_id, created_by, company_id,url, create_date, price, createdAt,updatedAt)
@@ -36,29 +36,29 @@ values ('Banana TV (4th generation) (64 GB)',4,1,1,'./assets/img/BananaTV.png',
 insert into products (short_desc, category_id, created_by, company_id,url, create_date, price, createdAt,updatedAt)
 values ('Banana TV 4K (5th generation)',4,1,1,'./assets/img/BananaTV.png',now(),999,now(),now());
 insert into products (short_desc, category_id, created_by, company_id,url, create_date, price, createdAt,updatedAt)
-values ('Banana Watch',5,1,1,'./assets/img/BananaWatch.png',now(),159,now(),now());
+values ('Banana Watch',5,1,1,'./assets/img/bananaWatch.png',now(),159,now(),now());
 insert into products (short_desc, category_id, created_by, company_id,url, create_date, price, createdAt,updatedAt)
-values ('Banana Watch Sport',5,1,1,'./assets/img/BananaWatch.png',now(),159,now(),now());
+values ('Banana Watch Sport',5,1,1,'./assets/img/bananaWatch.png',now(),159,now(),now());
 insert into products (short_desc, category_id, created_by, company_id,url, create_date, price, createdAt,updatedAt)
-values ('Banana Watch Edition',5,1,1,'./assets/img/BananaWatch.png',now(),159,now(),now());
+values ('Banana Watch Edition',5,1,1,'./assets/img/bananaWatch.png',now(),159,now(),now());
 insert into products (short_desc, category_id, created_by, company_id,url, create_date, price, createdAt,updatedAt)
-values ('Banana Watch Series 1',5,1,1,'./assets/img/BananaWatch.png',now(),159,now(),now());
+values ('Banana Watch Series 1',5,1,1,'./assets/img/bananaWatch.png',now(),159,now(),now());
 insert into products (short_desc, category_id, created_by, company_id,url, create_date, price, createdAt,updatedAt)
-values ('Banana Watch Series 2',5,1,1,'./assets/img/BananaWatch.png',now(),159,now(),now());
+values ('Banana Watch Series 2',5,1,1,'./assets/img/bananaWatch.png',now(),159,now(),now());
 insert into products (short_desc, category_id, created_by, company_id,url, create_date, price, createdAt,updatedAt)
-values ('Banana Watch Hermès Series 2',5,1,1,'./assets/img/BananaWatch.png',now(),159,now(),now());
+values ('Banana Watch Hermès Series 2',5,1,1,'./assets/img/bananaWatch.png',now(),159,now(),now());
 insert into products (short_desc, category_id, created_by, company_id,url, create_date, price, createdAt,updatedAt)
-values ('Banana Watch Edition Series 2',5,1,1,'./assets/img/BananaWatch.png',now(),159,now(),now());
+values ('Banana Watch Edition Series 2',5,1,1,'./assets/img/bananaWatch.png',now(),159,now(),now());
 insert into products (short_desc, category_id, created_by, company_id,url, create_date, price, createdAt,updatedAt)
-values ('Banana Watch Nike+ Series 2',5,1,1,'./assets/img/BananaWatch.png',now(),159,now(),now());
+values ('Banana Watch Nike+ Series 2',5,1,1,'./assets/img/bananaWatch.png',now(),159,now(),now());
 insert into products (short_desc, category_id, created_by, company_id,url, create_date, price, createdAt,updatedAt)
-values ('Banana Watch Series 3',5,1,1,'./assets/img/BananaWatch.png',now(),159,now(),now());
+values ('Banana Watch Series 3',5,1,1,'./assets/img/bananaWatch.png',now(),159,now(),now());
 insert into products (short_desc, category_id, created_by, company_id,url, create_date, price, createdAt,updatedAt)
-values ('Banana Watch Hermès Series 3',5,1,1,'./assets/img/BananaWatch.png',now(),159,now(),now());
+values ('Banana Watch Hermès Series 3',5,1,1,'./assets/img/bananaWatch.png',now(),159,now(),now());
 insert into products (short_desc, category_id, created_by, company_id,url, create_date, price, createdAt,updatedAt)
-values ('Banana Watch Edition Series 3',5,1,1,'./assets/img/BananaWatch.png',now(),159,now(),now());
+values ('Banana Watch Edition Series 3',5,1,1,'./assets/img/bananaWatch.png',now(),159,now(),now());
 insert into products (short_desc, category_id, created_by, company_id,url, create_date, price, createdAt,updatedAt)
-values ('Banana Watch Nike+ Series 3',5,1,1,'./assets/img/BananaWatch.png',now(),159,now(),now());
+values ('Banana Watch Nike+ Series 3',5,1,1,'./assets/img/bananaWatch.png',now(),159,now(),now());
 insert into products (short_desc, category_id, created_by, company_id,url, create_date, price, createdAt,updatedAt)
 values ('BananaBook (Early 2015)',6,1,1,'./assets/img/BANANABOOK.png',now(),450,now(),now());
 insert into products (short_desc, category_id, created_by, company_id,url, create_date, price, createdAt,updatedAt)
