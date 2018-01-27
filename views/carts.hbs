@@ -17,14 +17,14 @@
             </div>
             <div class="col-md-2">
                 <div class="input-group spinner">
-                    <input type="number" class="form-control qty-id" value="1">
+                    <input type="number" class="form-control qty-id" value="{{qty}}">
                 </div>
             </div>
             <div class="col-md-2 price-div" price={{price}}>
-                <h4 class="price-tag"><strong>${{price}}</strong></h4>
+                <h4 class="price-tag"><strong>${{totalPrice}}</strong></h4>
             </div>
             <div class="col-md-2 remove-div">
-                <button type="button" class="btn btn-outline-danger">
+                <button data-id="{{id}}" type="button" class="btn btn-outline-danger">
                     <span class="glyphicon glyphicon-trash"></span>
                     </button>
             </div>
@@ -61,49 +61,62 @@
             calculateTotals();
         });
 
-        $('.qty-id').on('click', function(){
-            var el = this;
+        $('.qty-id').on('keyup keydown change click', function(){
+            var el = [this];
             updatePrice(el);
-            updateDataAttributes();
+            updateDataAttribute(el);
 
         });
 
         $('.qty-id').on('keyup keydown click change', calculateTotals);
 
-        $('#update-btn').on('click', updateCartModel);
+        $('#update-btn').on('keyup keydown change click', updateCartModel);
+
+        $('.btn.btn-outline-danger').on('click', deleteCartItem);
+
+        $('#checkout-btn').on('click', checkoutAndCreateOrder);
 
         
         function updatePrice(el){
 
-          var itemPriceTotal = parseInt(el.parentElement.parentElement.parentElement.children[3].children[0].innerText);
+            el.forEach((el) => {
 
-          var individualPrice = parseInt(el.parentElement.parentElement.parentElement.children[3].attributes.price.value);
+                var itemPriceTotal = parseInt(el.parentElement.parentElement.parentElement.children[3].children[0].innerText);
 
-          var newPrice = individualPrice * parseInt(el.value);
+                var individualPrice = parseInt(el.parentElement.parentElement.parentElement.children[3].attributes.price.value);
 
-          itemPriceTotal = newPrice;
+                var newPrice = individualPrice * parseInt(el.value);
 
-          console.log(itemPriceTotal);
+                itemPriceTotal = newPrice;
 
-          el.parentElement.parentElement.parentElement.children[3].children[0].innerHTML = `<strong>$${itemPriceTotal}</strong>`;
+                console.log(itemPriceTotal);
+
+                el.parentElement.parentElement.parentElement.children[3].children[0].innerHTML = `<strong>$${itemPriceTotal}</strong>`;
+            });
 
         }
 
-        function updateDataAttributes(){
-            var cartRows = document.querySelectorAll('.row.cart-item');
+        function updateDataAttribute(el){
+            el.forEach((el) => {
+
+                var dataset = el.parentElement.parentElement.parentElement.dataset;
+                console.log(dataset.qty);
+                dataset.qty = el.value;
+                
+            });
         }
 
         function calculateTotals(){
             var subTotal = document.querySelector('#total-box').children[1].children[0];
             var Total = document.querySelector('#total-box').children[1].children[1];
-
+            var rows = document.querySelectorAll('.row.cart-item');
             var itemPriceTotals = document.querySelectorAll('.price-tag');
 
             console.log(itemPriceTotals);
 
             var subtotalCalc = null;
 
-            itemPriceTotals.forEach((total) => {
+            itemPriceTotals.forEach((total, index) => {
                 
                 price = parseInt(total.children[0].innerText.split('$')[1]);
 
@@ -118,20 +131,66 @@
 
         function updateCartModel(){
             
-            var dataForServer =[];
-
+            var dataForServer = [];
             var cartRows = document.querySelectorAll('.row.cart-item');
 
-            console.log(cartRows);
+            cartRows.forEach((row) => {
+                var dataObject = {};
+
+                dataObject.cartID = row.dataset.cartid;
+                dataObject.itemID = row.dataset.itemid;
+                dataObject.userID = row.dataset.userid;
+                dataObject.qty = row.dataset.qty;
+                dataObject.price = row.dataset.price;
+
+                console.log(dataObject);
+                dataForServer.push(dataObject);
+            });
+
+            console.log(dataForServer);
 
             $.ajax({
                 url: 'carts/update',
                 method: 'POST',
+                data: {'data': dataForServer},
+            
             }).done((data) =>{
                 console.log(data);
-                // window.location = '/carts';
+                window.location = '/carts';
             });
         }
+
+        function deleteCartItem(){
+            var data = this.dataset.id;
+
+            $.ajax({
+                url: 'carts/remove',
+                method: 'POST',
+                data: {data},
+            }).done((data) => {
+                console.log(data);
+                window.location = `/${data}`;
+
+            });
+        }
+
+        function checkoutAndCreateOrder(){
+            var totalPriceElement = document.querySelector('#totalPrice');
+
+            var totalPrice = parseInt(totalPriceElement.children[0].innerText.split('$')[1]);
+
+            $.ajax({
+                url: 'carts/checkout',
+                method: 'POST',
+                data: {totalPrice},
+            }).done((data) => {
+                console.log(data);
+                window.location = data.location;
+                alert(`Thanks for your purchase, your order id is ${data.order.id} and you spent ${data.order.price}`);
+            });
+        }
+
+
 
 
 

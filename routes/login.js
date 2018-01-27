@@ -76,6 +76,7 @@ router.post('/register', function(req, res){
 		db.User.create(userinfo).then(function(user){
 			user.generateHash(user.password).then((hash) => {
 				user.password = hash;
+				user.active = true;
 				console.log(user);
 				user.save();
 			});
