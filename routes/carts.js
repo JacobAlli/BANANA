@@ -18,6 +18,14 @@ router.get('/', function (req, res) {
     });
 });
 
+router.delete('/', function (req, res) {
+    db.Cart.destroy({})
+    .then(function(carts){
+        console.log(carts);
+        res.json(carts);    
+    });
+});
+
 router.post('/update', function(req, res){
 	
 	var ajaxData = req.body;
