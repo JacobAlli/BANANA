@@ -25,4 +25,17 @@ router.get('/products', function(req, res, next) {
     console.log(products[0]);
   });
 });
+
+router.get('/phone', function(req, res){
+  res.render('phone');
+});
+
+router.get('/laptop', function(req, res){
+  res.render('laptop');
+});
+
+router.get('/magick', function(req, res){
+  res.render('magick');
+});
+
 module.exports = router;

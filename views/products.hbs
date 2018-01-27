@@ -1,11 +1,43 @@
 {{#if user}}
-<br>
-<br>
-<br>
-<br>
-<br>
 
-<label for="p_scnts">
+
+
+<div class="container">
+    <div class="filter">
+        <ul class="categories">
+            <div class="row" data-aos="fade-left">
+            <div class="col-sm-1" id="cat"><li><a href="#"><img class="filter-icon" src="assets/img/BlackBanana.png" height="40px"></a></li></div>
+            <div class="col-sm-1" id="cat"><li><a href="#"><img class="filter-icon" src="assets/img/BAccessories.png" height="40px"></a></li></div>
+            <div class="col-sm-1" id="cat"><li><a href="#"><img class="filter-icon" src="assets/img/Bphone.png" height="40px"></a></li></div>
+            <div class="col-sm-1" id="cat"><li><a href="#"><img class="filter-icon" src="assets/img/BTV.png" height="40px"></a></li></div>
+            <div class="col-sm-1" id="cat"><li><a href="#"><img class="filter-icon" src="assets/img/Bwatch.png" height="40px"></a></li></div>
+            <div class="col-sm-1" id="cat"><li><a href="#"><img class="filter-icon" src="assets/img/Bbook.png" height="40px"></a></li></div>
+            <div class="col-sm-1" id="cat"><li><a href="#"><img class="filter-icon" src="assets/img/Bbook2.png" height="40px"></a></li></div>
+            <div class="col-sm-1" id="cat"><li><a href="#"><img class="filter-icon" src="assets/img/Bbook3.png" height="40px"></a></li></div>
+            <div class="col-sm-1" id="cat"><li><a href="#"><img class="filter-icon" src="assets/img/Bpad.png" height="40px"></a></li></div>
+            <div class="col-sm-1" id="cat"><li><a href="#"><img class="filter-icon" src="assets/img/Bphones.png" height="40px"></a></li></div>
+            <div class="col-sm-1" id="cat"><li><a href="#"><img class="filter-icon" src="assets/img/Bphone.png" height="40px"></a></li></div>
+            <div class="col-sm-1" id="cat"><li><a href="#"><img class="filter-icon" src="assets/img/BphoneX.png" height="40px"></a></li></div>
+            </div>
+            <div class="row" data-aos="fade-left">
+            <div class="col-sm-1" id="cat"><li><a href="#">Banana</a></li></div>
+            <div class="col-sm-1" id="cat"><li><a href="#">Banana Accessories</a></li></div>
+            <div class="col-sm-1" id="cat"><li><a href="#">Banana Touch</a></li></div>
+            <div class="col-sm-1" id="cat"><li><a href="#">Banana TV</a></li></div>
+            <div class="col-sm-1" id="cat"><li><a href="#">Banana Watch</a></li></div>
+            <div class="col-sm-1" id="cat"><li><a href="#">BananaBook</a></li></div>
+            <div class="col-sm-1" id="cat"><li><a href="#">BananaBook Air</a></li></div>
+            <div class="col-sm-1" id="cat"><li><a href="#">BananaBook Pro</a></li></div>
+            <div class="col-sm-1" id="cat"><li><a href="#">BananaPad</a></li></div>
+            <div class="col-sm-1" id="cat"><li><a href="#">BananaPhone</a></li></div>
+            <div class="col-sm-1" id="cat"><li><a href="#">BananaPod</a></li></div>
+            <div class="col-sm-1" id="cat"><li><a href="#">iBanana</a></li></div>
+            </div>
+        </ul>
+    </div>
+</div>
+<div class="container">
+{{!-- <label for="p_scnts">
     <input type="text" id="p_scnt" size="20" name="p_scnt" value="" placeholder="Product Name" />
 </label>
 <label for="p_scnts">
@@ -13,33 +45,45 @@
 </label>
 <label for="p_scnts">
     <input type="text" id="p_scnt" size="20" name="p_scnt" value="" placeholder="Company" />
-</label>
+</label> --}}
 <br>
 <br>
+
+
+
+
+   <h1>Banana.Shop</h1>
+
+
 {{#each products}}
-    <div class='row prod' id={{id}}>
+    <div class='row prod' url={{url}} id={{id}}>
         <div class="col-md-10 ">
             <div class='productshelf'>
             </div>
             <div class="row">
-                <div class="col-md-5" >
-                    <h3>{{short_desc}}</h3>
+                <div class="col-md-1">
+                    <img class="productImg" src="{{url}}" height="40px">
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-6" >
+                    <h4 class="productTitle">{{short_desc}}</h4>
+                </div>
+                <div class="col-md-1">
                     <h5>{{Category.category_name}}</h5>
                 </div>
             </div>
         </div> 
         <div class="col-md-1">
-            <button id={{id}} class='btn btn-danger buy'>buy</button>
+            <button id={{id}} class='btn btn-primary buy'>Buy ></button>
         </div>
         <div class="col-md-1">
-            <h1>${{price}}</h1>
+            <h3 class="productPrice">${{price}}</h3>
         </div>
         <br>
-    </div>       
-{{/each}}
+    </div>    
 
+{{/each}}
+   </div> 
+</div>
 <script class="javascript">
     $(".buy").on("click", function(event) {
         id = $(this).attr('id');
