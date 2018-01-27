@@ -309,12 +309,13 @@ img.img-circle{
 .productshelf{
   background: #818B75;
   border: solid border-style #222B31;
-  height: 2px;
+  height: 1px;
   text-align: left;
   align-content: left;
   justify-content: left;
   width: 100%;
   font-family: ‘Montserrat’, sans-serif;;
+  margin: 5px;
 }
 
 .buy{
@@ -322,7 +323,18 @@ img.img-circle{
 
 }
 
+.productTitle {
 
+}
+
+.productPrice {
+    margin-top: 10px;
+}
+
+.btn-primary{
+  height: 35px;
+  margin-top: 10px;
+}
 /***************/
 /*  PRODUCTS PG */
 /***************/
@@ -467,6 +479,13 @@ margin: auto;
 .analyticsThree h2 {
   text-align: center;
 }
+
+#anaButton {
+  width: 20%;
+  margin: auto;
+  text-align: center;
+}
+
 
 /***************/
 /*  THE TEAM */

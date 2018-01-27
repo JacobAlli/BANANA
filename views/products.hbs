@@ -52,7 +52,7 @@
 
 
 
-   <h1>Something</h1>
+   <h1>Banana.Shop</h1>
 
 
 {{#each products}}
@@ -61,10 +61,13 @@
             <div class='productshelf'>
             </div>
             <div class="row">
-                <div class="col-md-5" >
-                    <h3>{{short_desc}}</h3>
+                <div class="col-md-1">
+                    <img class="productImg" src="{{url}}" height="40px">
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-6" >
+                    <h4 class="productTitle">{{short_desc}}</h4>
+                </div>
+                <div class="col-md-1">
                     <h5>{{Category.category_name}}</h5>
                 </div>
             </div>
@@ -73,7 +76,7 @@
             <button id={{id}} class='btn btn-primary buy'>Buy ></button>
         </div>
         <div class="col-md-1">
-            <h1>${{price}}</h1>
+            <h3 class="productPrice">${{price}}</h3>
         </div>
         <br>
     </div>    
