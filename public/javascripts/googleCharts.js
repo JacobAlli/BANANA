@@ -1,4 +1,3 @@
-
 ///////////////////////////
 //ADD CLICK COUNT TO PAGE// DONE
 ///////////////////////////
@@ -560,7 +559,5 @@ google.charts.load('current', {'packages':['corechart']});
         });
 
       }
-
-
 
 

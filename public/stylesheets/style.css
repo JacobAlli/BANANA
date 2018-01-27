@@ -10,10 +10,6 @@
   padding: inherit;
 }
 
-body{
-
-font-family: ‘Montserrat’, sans-serif;
-}
 /* NOAH LOGIN */
 
 .login-bg {
@@ -101,15 +97,14 @@ font-family: ‘Montserrat’, sans-serif;
 
 h1 {
   text-align: center;
-  font-size: 50px;
 }
 
 /********/
 /* icon */
 /********/
 .icon{
-  width: 35px;
-  height: 35px;
+  width: 40px;
+  height: 40px;
   margin-top: auto;
 }
 
@@ -117,26 +112,20 @@ h1 {
 /***********/
 /* nav bar */
 /***********/
-/*.navbar-toggle {
+.navbar-toggle {
   width: 100%;
-}*/
+}
 
-/*.navbar-toggle button{
+.navbar-toggle button{
   float: left;
-}*/
-
-nav li {
-  margin-right: 20px;
-  margin-left: 20px;
+}
+.navbar-inverse{
+  background:#222B31 !important;
+  border-bottom:4px solid #ADB227 !important;
 }
 
-.nav-link  {
-  color: white;
-}
-
-
-/*.navbar-brand{
-  font:200 14px Lato !important;
+.navbar-brand{
+  font:200 14px helvetica neue !important;
   color:#FFF !important;
   letter-spacing:2px;
   margin-bottom: 7px;
@@ -144,15 +133,15 @@ nav li {
   margin-left: 15px;
   margin-right: 15px;
 }
-*/
 
 
-/*ul.nav.navbar-nav {
+
+ul.nav.navbar-nav {
   width: 100%;
   text-align: center;
-}*/
+}
 
-/*.nav{
+.nav{
   margin-bottom:0px;
 
   a {
@@ -163,64 +152,65 @@ nav li {
     text-transform:uppercase;
     position:relative;
     z-index:1000;
-   
+    height: 50px;
   }
   a:hover{
-    color:#FFF !important;
+    /*color:#FFF !important;*/
 
   }
   li{
     position:relative;
 
   }
-}*/
-/*
+}
+
 .navbar-inverse .navbar-toggle{
   border:none;
 }
-*/
+
 .navbar-collapse{
   box-shadow:none !important;
   border:none !important;
   margin: auto;
 }
 
-/*.navbar-inverse .navbar-toggle:hover{
+.navbar-inverse .navbar-toggle:hover{
   background:transparent !important;
-}*/
+}
 
-/*.navbar-inverse .navbar-toggle:focus{
+.navbar-inverse .navbar-toggle:focus{
   background:transparent !important;
-}*/
-/*
+}
+
 .navbar-inverse .navbar-toggle:active{
   background:transparent !important;
-}*/
+}
 
-/*.icon-bar{
+.icon-bar{
   background:#a3bfc6 !important;
-  margin: auto;
+  /*margin: auto;*/
   float: left;
   margin: 10px;
 
-}*/
+}
 
-/*.sr-only {
+.sr-only {
   float: left;
   clear: right;
   color: white;
-}*/
+  background-color: purple;
+}
 
-/*.navCart {
+.navCart {
   float: right;
-}*/
+}
 
-/*.cartIcon {
-  height: 30px;
-  width: 30px;
-}*/
+.cartIcon img{
+  height: 40px;
+  width: 40px;
+}
 
-/*.hover{
+.hover{
   display:block;
   position:absolute;
   width:0%;
@@ -230,7 +220,7 @@ nav li {
   background:#EE445F !important;
   z-index:0;
   opacity:0;
-}*/
+}
 
 @media (max-width: 767px) {
 .nav{
@@ -247,11 +237,11 @@ nav li {
   }
 }
 
-/*
+
 .collapse.navbar-collapse{
   margin: auto;
   width: 70%;
-}*/
+}
 /**********/
 /* footer */
 /**********/
@@ -285,20 +275,16 @@ footer{
 /************/
 .img-circle {
   border-radius: 50%;
-  
-  height: 29%;
-
+  margin: auto;
 }
 
-img.img-circle{
+img.img-circle {
   margin: auto;
-  margin-left: 25%;
-  margin-right: 25%;
-  margin-bottom: 24px;
 }
 
 .img-circle:hover{
   background: rgba(255, 255, 255, 0.31);
+
 }
 
 /*****************/
@@ -308,93 +294,17 @@ img.img-circle{
 .productshelf{
   background: #818B75;
   border: solid border-style #222B31;
-  height: 1px;
+  height: 2px;
   text-align: left;
   align-content: left;
   justify-content: left;
   width: 100%;
-  font-family: ‘Montserrat’, sans-serif;;
-  margin: 5px;
 }
 
 .buy{
   margin-top:15px;
 
 }
-
-.productTitle {
-
-}
-
-.productPrice {
-    margin-top: 10px;
-}
-
-.btn-primary{
-  height: 35px;
-  margin-top: 10px;
-}
-/***************/
-/*  PRODUCTS PG */
-/***************/
-
-.filter {
-  position: realtive;
-  margin-top: 100px;
-}
-
-.filter ul {
-  margin: auto;
-  position: realtive;
-}
-
-.filter li {
-  list-style: none;
-  margin-top: 12px;
-  font-size: 10px;
-  color: white;
-  text-align: center;
-  /*width: 6%;*/
-  /*position: absolute;*/
-  bottom: 0;
-  line-height: 11px;
-}
-
-.categoies ul{
-  margin: auto;
-}
-
-
-.filter-icon {
-margin: auto;
-}
-
-
-/*.filter p{
-  text-align: center;
-  bottom: 0;
-}*/
-
-#cat a{
-  color: black;
-  font-family: helvetica neue;
-  bottom: 0;
-
-}
-
-#cat a:hover {
-  color: navy;
-  text-decoration: none;
-}
-
-/*.col-sm-1 {
-  position: relative;
-}*/
-
-/*.col-sm-1 a{
-  bottom: 0;
-  position: absolute;
-}*/
 
 /*****************/
 /*  FRONT PAGE  */
@@ -411,23 +321,23 @@ margin: auto;
 
 .feat {
   background-color: white;
-  width: 100%;
-  height: 400px;
-  margin: 10px;
+  width: 97%;
+  height: 370px;
+  margin: auto;
+  margin-top: 10px;
+  margin-top: 10px;
   padding: 10px;
-  text-align: center;
 }
 
 .oneImg {
-    margin: auto;
-    width: 596px;
-    height: 641px;
-    position: relative;
-    bottom: -100px;
+  margin: auto;
+     width: 45%;
+  height: 50%;
 }
 
 .oneImg img{
    margin: auto;
+
 }
 
 #section1 h1{
@@ -451,21 +361,12 @@ margin: auto;
   color: white;
 }
 
-#section2 a{
- 
-  text-decoration: none;
+#section4 {
+  padding: 50px;
 }
-
-#section2 a:hover {
-  color: black;
-}
-
-#section4 h1{
-  text-align: center;
-}
-
 
 .analyticsThree {
+
   margin: 10px;
   text-align: center;
   color: white;
@@ -479,28 +380,14 @@ margin: auto;
   text-align: center;
 }
 
-#anaButton {
-  width: 20%;
-  margin: auto;
-  text-align: center;
-}
-
-
 /***************/
 /*  THE TEAM */
 /***************/
 
 #section4 h2 {
   text-align: center;
-}
 
-#section4 {
-  text-align: center;
 }
-#section4 h5{
-  margin: 5px;
-}
-
 
 /*******************/
 /* ANALYTICS PAGES */
@@ -534,19 +421,17 @@ margin: auto;
 /* CART PAGE*/
 /************/
 .cart-bg {
-  margin-top: 80px;
   height: 100%;
   width: 100%;
   background: linear-gradient(to bottom, #16222a, #3a6073);
   background-size: cover;
   background-position: center;
-  vertical-align: center;
 }
 #cart-card {
+  font:200 14px helvetica neue !important;
   height: 100%;
   background: white;
   border: 3px solid black;
-  vertical-align: center;
 }
 #cart-header {
   color: black;
@@ -570,6 +455,7 @@ margin: auto;
   width: 200px;
   height: 25px;
   background-color: #f2b632;
+  font-family: sans-serif;
   border-radius: 10px;
   align-items: center;
 }

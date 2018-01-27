@@ -1,8 +1,5 @@
 $(document).ready(function(){
           $('#fullpage').fullpage({
-            sectionsColor: ['#fff',  '#677077','#252839','#f2b632'],
-            scrollBar: true,
+            sectionsColor: ['#fff', '#252839', '#677077','#f2b632']
           });
-          AOS.init({
-          	duration: 1200});
         });

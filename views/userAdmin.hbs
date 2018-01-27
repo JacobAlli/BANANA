@@ -1,4 +1,4 @@
-<br><br><br>
+<br><br><br><br><br><br><br>
 {{#if loggedUser.user_type}}
         <table class="table table-dark">
               <thead>
@@ -17,17 +17,17 @@
                   <th scope="row">{{id}}</th>
                   <td>{{user_name}}</td>
                   <td>
-                    <select class="custom-select" name="userType">
+                    <select name="userType">
                         <option value="0" {{#unless user_type}}selected{{/unless}}>Regular User</option>
                         <option value="1" {{#if user_type}}selected{{/if}}>Admin</option>
                     </select>
                   </td>
                   <td>{{#if active}}Active{{/if}}{{#unless active}}Deactivated{{/unless}}</td>
-                  <td><input type="hidden" name="id" value={{id}}><input class="btn btn-outline-info" type="submit" value="Update"></form>
+                  <td><input type="hidden" name="id" value={{id}}><input type="submit" value="Update"></form>
                     <form action="users/delete" method="POST">
                         <input type="hidden" name="id" value="{{id}}">
                         <input type="hidden" name="status" value="{{active}}">
-                        <input class="btn btn-outline-warning" type="submit" value="{{#if active}}Deactivate{{/if}}{{#unless active}}Activate{{/unless}}">
+                        <input type="submit" value="{{#if active}}Deactivate{{/if}}{{#unless active}}Activate{{/unless}}">
                     </form>
                   </td>
                 </tr>
