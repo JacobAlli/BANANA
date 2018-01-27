@@ -37,7 +37,7 @@ router.get('/clicks', function(req, res){
 
 //localhost:3000/api/orders
 router.get('/orders', function(req, res){
-  db.Cart.findAll({
+  db.Order.findAll({
   // attributes: ['product_id',[db.sequelize.fn('COUNT', db.sequelize.col('id')), 'clickCount']],
   // group: 'product_id'
   }).then((result) => {

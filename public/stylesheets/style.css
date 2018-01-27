@@ -413,9 +413,11 @@ img.img-circle {
 /* CART PAGE*/
 /************/
 .cart-bg {
-  height: 100vh;
+  height: 100%;
   width: 100%;
-  background: url("../assets/img/login-banana.jpg");
+  background: linear-gradient(to bottom, #16222a, #3a6073);
+  background-size: cover;
+  background-position: center;
 }
 #cart-card {
   font:200 14px helvetica neue !important;
