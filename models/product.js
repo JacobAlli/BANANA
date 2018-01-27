@@ -29,6 +29,11 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       len: [1]
     },
+    url: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      len: [1]
+    },
     create_date: {
       type: DataTypes.TEXT,
       allowNull: false,
@@ -48,6 +53,5 @@ module.exports = function(sequelize, DataTypes) {
       underscored: true
     })
   };
-
   return Product;
 };
