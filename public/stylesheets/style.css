@@ -2,24 +2,40 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
 *:after {
   box-sizing: inherit;
   margin: inherit;
   padding: inherit;
+  overflow-x: hidden;
+}
+
+html.fa-events-icons-ready.fp-enabled{
+  overflow-x: hidden !important;
+  width: 100vw !important;
+  overflow-x: hidden !important;
+}
+
+nav.navbar.fixed-top.navbar-expand-lg.navbar-dark.bg-dark{
+  width: 100vw;
+
 }
 
 body{
-
+overflow-x: hidden;
 font-family: ‘Montserrat’, sans-serif;
+width: 100vw !important;
+height: 100%;
 }
+
+
 /* NOAH LOGIN */
 
 .login-bg {
 	height: 100vh;
 	width: 100%;
-	margin-top: 100px;
 	padding: 0;
 	background: url("../assets/img/login-banana.jpg");
 	font-family: sans-serif;
@@ -27,9 +43,9 @@ font-family: ‘Montserrat’, sans-serif;
 }
 .log-container {
 	position: absolute;
-	top: 50%;
+	top: 80px;
 	left: 50%;
-	transform: translate(-50%, -50%);
+	transform: translate(-50%, 0%);
 	width: 400px;
 	padding: 40px;
 	background: rgba(0, 0, 0, .8);
@@ -114,6 +130,7 @@ h1 {
 }
 
 
+
 /***********/
 /* nav bar */
 /***********/
@@ -126,7 +143,6 @@ h1 {
 }*/
 
 nav li {
-  margin-right: 20px;
   margin-left: 20px;
 }
 
@@ -232,20 +248,20 @@ nav li {
   opacity:0;
 }*/
 
-@media (max-width: 767px) {
+/*@media (max-width: 767px) {
 .nav{
   padding-bottom:20px;
   a{
     padding:12px !important;
   }
 }
-}
+*/
 
-@media (max-width: 480px) {
+/*@media (max-width: 480px) {
   .nav{
     padding-bottom:20px;
   }
-}
+}*/
 
 /*
 .collapse.navbar-collapse{
@@ -286,16 +302,24 @@ footer{
 .img-circle {
   border-radius: 50%;
   
-  height: 29%;
+  height: 100px;
+
+  margin: 20px 0 20px 0;
 
 }
 
-img.img-circle{
+.img-circle img{
   margin: auto;
   margin-left: 25%;
   margin-right: 25%;
   margin-bottom: 24px;
 }
+
+.team-card {
+  padding: 20px;
+}
+
+
 
 .img-circle:hover{
   background: rgba(255, 255, 255, 0.31);
@@ -413,32 +437,88 @@ margin: auto;
   background-color: white;
   width: 100%;
   height: 400px;
-  margin: 10px;
   padding: 10px;
+  margin: 10px 0 10px 0;
   text-align: center;
+  border-left: 3px solid black;
 }
+
+#fullpage {
+  width: 100vw;
+}
+
+#section1{
+  position: relative;
+  width: 100%;
+}
+#section2{
+  width: 100%;
+}
+#section3{
+  width: 100%;
+}
+#section4{
+  width: 100%;
+}
+
+
 
 .oneImg {
-    margin: auto;
-    width: 596px;
-    height: 641px;
-    position: relative;
-    bottom: -100px;
+    display: inline-block;
+    height: 60%;
+    position: absolute;
+    left: 50%;
+    bottom: 0%;
+    transform: translateX(-50%) !important;
 }
 
-.oneImg img{
-   margin: auto;
+@media (max-width: 767px) {
+  .oneImg {
+    display: inline-block;
+    width: 300px;
+    position: absolute;
+    left: 50%;
+    bottom: 0%;
+    transform: translateX(-50%) !important;
+  }
+  .main-title {
+    display: inline-block;
+    width: 100%;
+    position: absolute;
+    font-size: 48px !important;
+    top: 17%;
+    left: 50%;
+    transform: translateX(-50%) !important;
+  }
+
+  div.BAcount#BAsales{
+  font-size: 46px !important;
+}
 }
 
-#section1 h1{
+.main-title {
+  display: inline-block;
+  width: 100%;
+  position: absolute;
+  font-size: 64px;
+  top: 17%;
+  left: 50%;
+  transform: translateX(-50%) !important;
+}
+
+.main-tagline {
+  display: inline-block;
+  padding: 0;
   text-align: center;
-  font-size: 70px;
+  margin:0;
+  width: 100%;
+  position: absolute;
+  font-size: 1.5rem;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%) !important;
 }
 
-#section1 p{
-  text-align: center;
-  font-size: 25px;
-}
 
 #feat span {
   font-size: 100px;
